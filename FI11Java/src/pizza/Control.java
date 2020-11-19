@@ -70,6 +70,7 @@ public class Control
 			BufferedReader in = new BufferedReader(new FileReader("PizzaAuslesen.txt"));
 			BufferedReader in2 = new BufferedReader(new FileReader("GroesseAuslesen.txt"));
 			
+			/*
 			try
 			{
 				BufferedWriter out = new BufferedWriter(new FileWriter("test.txt", true));
@@ -81,9 +82,10 @@ public class Control
 			{
 				System.out.println(e.getMessage());
 			}
+			*/
 			try
 			{
-				
+				//JFileChooser
 				
 				while((zeile = in.readLine()) != null)
 				{

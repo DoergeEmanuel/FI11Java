@@ -1,0 +1,3 @@
+klein;1
+mittel;1.3
+groß;1.6
