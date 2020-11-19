@@ -14,6 +14,7 @@ public class Pizza
 	public double getPreis()
 	{
 		return preis;
+		//Änderung
 	}
 
 	@Override
