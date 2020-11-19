@@ -7,7 +7,9 @@ import java.awt.event.ItemListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -64,12 +66,24 @@ public class Control
 		try
 		{
 			String zeile = null;
+			String[] values;
+			BufferedReader in = new BufferedReader(new FileReader("PizzaAuslesen.txt"));
+			BufferedReader in2 = new BufferedReader(new FileReader("GroesseAuslesen.txt"));
 			
-			BufferedReader in = new BufferedReader(new FileReader("H:\\MeinJavaOrdner\\BestellungssoftwareAktuell\\Bestellungssoftware\\src\\bestellungssoftware/PizzaAuslesen.txt"));// "H:\\Java\\Aufgaben\\Bestellungssoftware\\Bestellungssoftware\\src\\bestellungssoftware/PizzaAuslesen.txt"
-			BufferedReader in2 = new BufferedReader(new FileReader("H:\\MeinJavaOrdner\\BestellungssoftwareAktuell\\Bestellungssoftware\\src\\bestellungssoftware/GroesseAuslesen.txt"));// "H:\\Java\\Aufgaben\\Bestellungssoftware\\Bestellungssoftware\\src\\bestellungssoftware/GroesseAuslesen.txt"
 			try
 			{
-				String[] values;
+				BufferedWriter out = new BufferedWriter(new FileWriter("test.txt", true));
+				out.write("hallo");
+				out.close();
+				
+			}
+			catch(Exception e)
+			{
+				System.out.println(e.getMessage());
+			}
+			try
+			{
+				
 				
 				while((zeile = in.readLine()) != null)
 				{
