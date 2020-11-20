@@ -79,7 +79,7 @@ public class Control
 			*/
 			try
 			{
-				//JFileChooser
+				//JFileChooser 
 				
 				while((zeile = in.readLine()) != null)
 				{
