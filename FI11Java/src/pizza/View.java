@@ -5,6 +5,7 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -51,6 +52,7 @@ public class View extends JFrame
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		
+		
 		contentPane.setLayout(null);
 		contentPane.add(getLabelPizza());
 		contentPane.add(getLabelExtras());
@@ -67,6 +69,12 @@ public class View extends JFrame
 		contentPane.add(getButtonDrucken());
 		contentPane.add(getButtonHardcopy());
 		contentPane.add(getButtonAllesEntfernen());
+		
+		JScrollPane s = new JScrollPane(getListBestellung());
+		s.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+		getContentPane().add(s);
+		s.setBounds(10, 89, 375, 190);
+		s.setVisible(true);
 	}
 	
 	private JLabel getLabelPizza() 
@@ -207,4 +215,5 @@ public class View extends JFrame
 		}
 		return buttonAllesEntfernen;
 	}
+	
 }

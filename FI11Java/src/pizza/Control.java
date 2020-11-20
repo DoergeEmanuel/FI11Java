@@ -46,12 +46,6 @@ public class Control
 	{	
 		this.view = new View();	
 		
-		JScrollPane s = new JScrollPane(view.getListBestellung());
-		s.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
-		view.getContentPane().add(s);
-		s.setBounds(10, 89, 375, 190);
-		s.setVisible(true);
-		
 		comboBoxModelPizza = new DefaultComboBoxModel<Pizza>();
 		comboBoxModelGroesse = new DefaultComboBoxModel<Groesse>();
 		listModelBestellung = new DefaultListModel<Bestellung>();
