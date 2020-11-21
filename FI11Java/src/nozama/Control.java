@@ -28,22 +28,31 @@ public class Control
 			BufferedReader in = new BufferedReader(new FileReader("Sortiment.txt"));
 			try
 			{
+				zeile = in.readLine();
 				while((zeile = in.readLine()) != null)
 				{
 					values = zeile.split("; ");
-					
+					values[2] = values[2].replace(",", ".");
+					values[2] = values[2].replace(" €", "");
+					//System.out.println(values[0] + ";" + values[1] + ";" + values[2]);
+					listModelSortiment.addElement(new Sortiment(values[0],values[1], Double.valueOf(values[2])));
 				}
 			}
 			catch(IOException ex)
 			{
 				System.out.println(ex.getMessage());
 			}
-		//	listModelSortiment.addElement(new Sortiment());
+			finally
+			{
+				in.close();
+			}
+			viewNozama.
 		}
 		catch(IOException e)
 		{
-			System.out.println("IOException");
+			System.out.println("Die Datei konnte nicht gefunden werden");
 		}
+		
 		
 	} 
 }
