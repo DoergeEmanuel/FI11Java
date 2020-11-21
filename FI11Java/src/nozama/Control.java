@@ -46,13 +46,13 @@ public class Control
 			{
 				in.close();
 			}
-			viewNozama.
+		
 		}
 		catch(IOException e)
 		{
 			System.out.println("Die Datei konnte nicht gefunden werden");
 		}
-		
+		viewNozama.getListSortiment().setModel(listModelSortiment);
 		
 	} 
 }

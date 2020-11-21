@@ -40,6 +40,14 @@ public class View extends JFrame
 	public View()
 	{
 		initialize();
+		
+		
+		JScrollPane s = new JScrollPane(getListBestellung());
+		s.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+		getContentPane().add(s);
+		s.setBounds(10, 89, 375, 190);
+		s.setVisible(true);
+		
 		setBounds(100, 100, 559, 377);
 	}
 	private void initialize() 
@@ -51,9 +59,8 @@ public class View extends JFrame
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		
-		
 		contentPane.setLayout(null);
+		
 		contentPane.add(getLabelPizza());
 		contentPane.add(getLabelExtras());
 		contentPane.add(getTextFieldExtras());
@@ -70,11 +77,7 @@ public class View extends JFrame
 		contentPane.add(getButtonHardcopy());
 		contentPane.add(getButtonAllesEntfernen());
 		
-		JScrollPane s = new JScrollPane(getListBestellung());
-		s.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
-		getContentPane().add(s);
-		s.setBounds(10, 89, 375, 190);
-		s.setVisible(true);
+		
 	}
 	
 	private JLabel getLabelPizza() 
@@ -214,6 +217,5 @@ public class View extends JFrame
 			buttonAllesEntfernen.setBounds(395, 157, 126, 23);
 		}
 		return buttonAllesEntfernen;
-	}
-	
+	}	
 }

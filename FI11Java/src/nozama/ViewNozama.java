@@ -15,28 +15,26 @@ import javax.swing.JTextField;
 public class ViewNozama extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textFieldName;
+	private JTextField textFieldKundenname;
 	private JList listWarenkorb;
-	private JLabel lblNewLabel_1;
+	private JLabel labelWarenkorb;
 	private JList listSortiment;
 	private JButton buttonRein;
 	private JButton buttonRaus;
-	private JLabel lblNewLabel_2;
+	private JLabel labelKundenname;
 	private JButton buttonAbschicken;
-	private JLabel lblNewLabel;
+	private JLabel labelNozama;
 
-	
-	
-	
 	
 	public ViewNozama() 
 	{
 		initialize();
-		setBounds(100, 100, 619, 366);
+		this.setBounds(100, 100, 616, 395);
 	}
 	private void initialize()
 	{
 		this.setVisible(true);
+		setTitle("Bestellung");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		contentPane = new JPanel();
@@ -45,23 +43,24 @@ public class ViewNozama extends JFrame {
 		contentPane.setLayout(null);
 		
 		contentPane.add(getListWarenkorb());	
-		contentPane.add(getLblNewLabel_1());
+		contentPane.add(getLabelWarenkorb());
 		contentPane.add(getListSortiment());
 		contentPane.add(getButtonRein());
 		contentPane.add(getButtonRaus());
-		contentPane.add(getLblNewLabel_2());
-		contentPane.add(getTextFieldName());
+		contentPane.add(getLabelKundenname());
+		contentPane.add(getTextFieldKundenname());
 		contentPane.add(getButtonAbschicken());
-		contentPane.add(getLblNewLabel());
+		contentPane.add(getLabelNozama());
+		
 	}
-	protected JTextField getTextFieldName() 
+	protected JTextField getTextFieldKundenname() 
 	{
-		if(textFieldName == null)
+		if(textFieldKundenname == null)
 		{
-			textFieldName = new JTextField();
-			textFieldName.setBounds(94, 281, 150, 20);
+			textFieldKundenname = new JTextField();
+			textFieldKundenname.setBounds(94, 281, 150, 20);
 		}
-		return textFieldName;
+		return textFieldKundenname;
 	}
 	protected JList getListWarenkorb() 
 	{
@@ -73,14 +72,14 @@ public class ViewNozama extends JFrame {
 		return listWarenkorb;
 	}
 	
-	protected JLabel getLblNewLabel_1() 
+	protected JLabel getLabelWarenkorb() 
 	{
-		if(lblNewLabel_1 == null)
+		if(labelWarenkorb == null)
 		{
-			lblNewLabel_1 = new JLabel("Warenkorb");
-			lblNewLabel_1.setBounds(343, 65, 80, 14);
+			labelWarenkorb = new JLabel("Warenkorb");
+			labelWarenkorb.setBounds(343, 65, 80, 14);
 		}
-		return lblNewLabel_1;
+		return labelWarenkorb;
 	}
 	
 	protected JList getListSortiment() 
@@ -113,14 +112,14 @@ public class ViewNozama extends JFrame {
 		return buttonRaus;
 	}
 	
-	protected JLabel getLblNewLabel_2() 
+	protected JLabel getLabelKundenname() 
 	{
-		if(lblNewLabel_2 == null)
+		if(labelKundenname == null)
 		{
-			lblNewLabel_2 = new JLabel("Kundenname:");
-			lblNewLabel_2.setBounds(10, 279, 80, 25);
+			labelKundenname = new JLabel("Kundenname:");
+			labelKundenname.setBounds(10, 279, 80, 25);
 		}
-		return lblNewLabel_2;
+		return labelKundenname;
 	}
 	
 	protected JButton getButtonAbschicken() 
@@ -132,14 +131,14 @@ public class ViewNozama extends JFrame {
 		}
 		return buttonAbschicken;
 	}
-	protected JLabel getLblNewLabel() 
+	protected JLabel getLabelNozama() 
 	{
-		if (lblNewLabel == null) 
+		if (labelNozama == null) 
 		{
-			lblNewLabel = new JLabel("Nozama");
-			lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 20));
-			lblNewLabel.setBounds(10, 42, 136, 37);
+			labelNozama = new JLabel("Nozama");
+			labelNozama.setFont(new Font("Tahoma", Font.PLAIN, 20));
+			labelNozama.setBounds(10, 42, 136, 37);
 		}
-		return lblNewLabel;
+		return labelNozama;
 	}
 }
