@@ -67,7 +67,10 @@ public class Control
 		{
 			String zeile = null;
 			String[] values;
-			BufferedReader in = new BufferedReader(new FileReader("Sortiment.txt"));
+		
+		//	BufferedReader in = Files.newBufferedReader(Paths.get("Sortiment.txt")); ???
+			BufferedReader in = new BufferedReader(new FileReader("Sortiment.txt")); 
+			
 			try
 			{
 				zeile = in.readLine();
@@ -214,62 +217,6 @@ public class Control
 	
 	
 	
-	
-	
-	
-	/*
-	
-	private void speichern ()
-	{
-		
-		try
-		{
-			dateiLesen();
-			dateiNameErzeugen();
-			
-			if(bestellung.getBestellnummer() != -1)
-			{		
-				BufferedWriter out = new BufferedWriter(new FileWriter(bestellung.getDatei(), false));
-				try
-				{
-					//dateiSpeichern();
-					String nummer, bezeichnung, preis;
-					out.write("Artikelnummer; Arikelbezeichnung; Preis;");
-					System.out.println("Artikelnummer; Arikelbezeichnung; Preis;");
-					out.newLine();
-					for(int i = 0; i < listModelWarenkorb.getSize(); i++)
-					{
-						nummer = listModelWarenkorb.elementAt(i).getArtikelnummer();
-						bezeichnung = listModelWarenkorb.elementAt(i).getArtikelbezeichnung();
-						preis = Double.toString(listModelWarenkorb.elementAt(i).getPreis());
-						out.write(nummer + "; " + bezeichnung + "; " + preis + " €;");
-						System.out.println(nummer + "; " + bezeichnung + "; " + preis + " €;");
-						out.newLine();
-					}
-					bestellListe.add(bestellung);
-					dateiSpeichern();
-				}
-				catch(IOException ex)
-				{
-					System.out.println(ex.getMessage());
-				}
-				finally
-				{
-					out.close();
-				}
-			}
-			else
-			{
-				JOptionPane.showMessageDialog(null, "Bitte geben Sie einen gültigen Wert als Name ein.","Achtung", JOptionPane.CANCEL_OPTION);
-			}
-		}
-		catch(IOException e)
-		{
-			System.out.println("IOException");
-		}		
-	}
-	*/
-	
 	private void speichern ()
 	{
 		
@@ -294,7 +241,7 @@ public class Control
 					bezeichnung = listModelWarenkorb.elementAt(i).getArtikelbezeichnung();
 					preis = Double.toString(listModelWarenkorb.elementAt(i).getPreis());
 					out.write(nummer + "; " + bezeichnung + "; " + preis + " €;");
-					System.out.println(nummer + "; " + bezeichnung + "; " + preis + " €;");
+					//System.out.println(nummer + "; " + bezeichnung + "; " + preis + " €;");
 					out.newLine();
 				}
 				bestellListe.add(bestellung);
@@ -317,41 +264,6 @@ public class Control
 		}		
 	}
 	
-	/*
-	private void dateiLesen()
-	{
-		bestellListe.removeAll(bestellListe);
-		try
-		{
-			String zeile = null;
-			String[] values = null;
-			BufferedReader in = new BufferedReader(new FileReader("Kunden.txt"));
-			
-			try
-			{
-				
-				while((zeile = in.readLine()) != null)
-				{
-					values = zeile.split("; ");
-					bestellListe.add(new Bestellung(values[0], Integer.valueOf(values[1])));
-					System.out.println(values[0] + "; " + values[1]);
-				}
-			}
-			catch(IOException ex)
-			{
-				System.out.println(ex.getMessage());
-			}
-			finally
-			{
-				in.close();
-			}
-		}
-		catch(IOException e)
-		{	
-			System.out.println("Die Datei konnte nicht gefunden werden");
-		}
-	}
-	*/
 	
 	
 	private void dateiLesen()
@@ -365,10 +277,8 @@ public class Control
 			{
 				while((zeile = in.readLine()) != null && zeile.length() != 0)
 				{
-					System.out.println(zeile);
 					values = zeile.split("; ");
 					bestellListe.add(new Bestellung(values[0], Integer.valueOf(values[1])));
-					System.out.println(values[0] + "; " + values[1]);
 				}
 			}
 			catch(IOException ex)
@@ -404,17 +314,14 @@ public class Control
 			nummer = 1;
 		}
 		
-		bestellung = new Bestellung(name, nummer);
-		
-			
-			
-		
+		bestellung = new Bestellung(name, nummer);	
 	}
+	
 	private void dateiSpeichern()
 	{
 		try
 		{
-			
+		//	BufferedWriter out = Files.newBufferedWriter(Paths.get("Kunden.txt")); ???
 			BufferedWriter out = new BufferedWriter(new FileWriter("Kunden.txt", true));
 			
 			try
@@ -440,7 +347,6 @@ public class Control
 			System.out.println("IOException");
 		}		
 	}
-	
 	
 	
 	
