@@ -34,7 +34,10 @@ public class View extends JFrame
 	private JTextField textFieldPreisSortiment;
 	private JLabel labelPreisSortiment;
 	private JLabel labelPreisWarenkorb;
+	private JLabel labelKundenname;
 	private JTextField textFieldPreisWarenkorb;
+	private JTextField textFieldKundenname;
+	private JButton buttonAbschicken;
 
 	
 	public View()
@@ -65,8 +68,9 @@ public class View extends JFrame
 		contentPane.add(getTextFieldPreisSortiment());
 		contentPane.add(getLabelPreisWarenkorb());
 		contentPane.add(getTextFieldPreisWarenkorb());
-		
-		
+		contentPane.add(getLabelKundenname());
+		contentPane.add(getTextFieldKundenname());
+		contentPane.add(getButtonAbschicken());
 		
 		
 		
@@ -74,7 +78,34 @@ public class View extends JFrame
 		
 		
 	}
-	
+	protected JTextField getTextFieldKundenname() 
+	{
+		if (textFieldKundenname == null)
+		{
+			textFieldKundenname = new JTextField();
+			textFieldKundenname.setColumns(10);
+			textFieldKundenname.setBounds(124, 346, 121, 20);
+		}
+		return textFieldKundenname;
+	}
+	protected JButton getButtonAbschicken() 
+	{
+		if (buttonAbschicken == null) 
+		{
+			buttonAbschicken = new JButton("Bestellung abschicken");
+			buttonAbschicken.setBounds(385, 322, 231, 42);
+		}
+		return buttonAbschicken;
+	}
+	private JLabel getLabelKundenname() 
+	{
+		if (labelKundenname == null) 
+		{
+			labelKundenname = new JLabel("Kundenname:");
+			labelKundenname.setBounds(10, 349, 104, 14);
+		}
+		return labelKundenname;
+	}
 	private JLabel getLabelSortiment() 
 	{
 		if (labelSortiment == null) 
