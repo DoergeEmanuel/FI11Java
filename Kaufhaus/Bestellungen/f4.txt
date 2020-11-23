@@ -1,0 +1,3 @@
+Artikelnummer; Arikelbezeichnung; Preis
+58763; Game of Thrones Blu-Ray; 39.95€
+25873; Playmobil Ritterburg; 123.95€

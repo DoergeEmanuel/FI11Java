@@ -2,3 +2,5 @@ Kaufhaus/Bestellungen/Emanuel1.txt; 1
 Kaufhaus/Bestellungen/Elina2.txt; 2
 Kaufhaus/Bestellungen/e3.txt; 3
 Kaufhaus/Bestellungen/f4.txt; 4
+Kaufhaus/Bestellungen/Emanuel5.txt; 5
+Kaufhaus/Bestellungen/Hans6.txt; 6

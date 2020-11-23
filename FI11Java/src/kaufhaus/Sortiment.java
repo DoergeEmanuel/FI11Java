@@ -13,11 +13,13 @@ public class Sortiment
 		this.preis = preis;
 	}
 	
-	protected String getArtikelnummer() {
+	protected String getArtikelnummer()
+	{
 		return artikelnummer;
 	}
 
-	protected String getArtikelbezeichnung() {
+	protected String getArtikelbezeichnung()
+	{
 		return artikelbezeichnung;
 	}
 	public double getPreis() 

@@ -27,8 +27,7 @@ public class Bestellung
 	protected void setDatei(String datei) {
 		this.datei = datei;
 	}
-
-
+	
 	protected int getBestellnummer() 
 	{
 		return bestellnummer;

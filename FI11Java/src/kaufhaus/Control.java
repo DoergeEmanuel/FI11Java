@@ -37,6 +37,7 @@ import javax.swing.event.ListSelectionListener;
 public class Control
 {
 	View view;
+	ViewErfolg viewErfolg;
 	ActionListener hinzu;
 	ActionListener raus;
 	ListSelectionListener waehleSortiment;
@@ -353,8 +354,10 @@ public class Control
 			finally
 			{
 				out.close();
-				JOptionPane.showMessageDialog(null,"Die Bestellung wurde erfolgreich aufgegeben!","Herzlichen Glückwunsch", JOptionPane.PLAIN_MESSAGE);
 			}
+			viewErfolg = new ViewErfolg();
+			viewErfolg.getListWarenkorb().setModel(listModelWarenkorb);
+			viewErfolg.getLabelBestellnummer().setText(String.valueOf(bestellung.getBestellnummer()));
 			
 		}
 		catch(IOException e)
