@@ -73,7 +73,9 @@ public class Control
 			String zeile = null;
 			String[] values;
 		
-			BufferedReader in = Files.newBufferedReader(Paths.get("Kaufhaus/Sortiment.txt"), StandardCharsets.UTF_8); 
+			
+			Path datei = Paths.get("Kaufhaus/Sortiment.txt");
+			BufferedReader in = Files.newBufferedReader(datei , StandardCharsets.UTF_8); 
 		//	BufferedReader in = new BufferedReader(new FileReader("Kaufhaus/Sortiment.txt", StandardCharsets.UTF_8)); 
 			
 			try
