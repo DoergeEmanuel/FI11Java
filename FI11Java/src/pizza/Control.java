@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.lang.Math;
+import java.nio.charset.StandardCharsets;
 import java.text.NumberFormat;
 
 import static javax.swing.JOptionPane.showMessageDialog;
@@ -61,8 +62,8 @@ public class Control
 		{
 			String zeile = null;
 			String[] values;
-			BufferedReader in = new BufferedReader(new FileReader("PizzaAuslesen.txt"));
-			BufferedReader in2 = new BufferedReader(new FileReader("GroesseAuslesen.txt"));
+			BufferedReader in = new BufferedReader(new FileReader("Pizza/PizzaAuslesen.txt", StandardCharsets.UTF_8));
+			BufferedReader in2 = new BufferedReader(new FileReader("Pizza/GroesseAuslesen.txt", StandardCharsets.UTF_8));
 			
 			/*
 			try

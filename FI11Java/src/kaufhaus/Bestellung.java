@@ -13,7 +13,7 @@ public class Bestellung
 		this.kundenname = kundenname;
 		this.bestellnummer = bestellnummer;
 		
-		datei = kundenname + Integer.toString(bestellnummer) + ".txt";
+		datei = "Kaufhaus/Bestellungen/" + kundenname + Integer.toString(bestellnummer) + ".txt";
 	}
 	protected String getKundenname() 
 	{

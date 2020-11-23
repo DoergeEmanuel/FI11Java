@@ -1,3 +1,0 @@
-Artikelnummer; Arikelbezeichnung; Preis;
-45879; SSD-Samsung; 69.85 €;
-68521; Joker Blu-Ray; 19.99 €;

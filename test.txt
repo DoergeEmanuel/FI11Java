@@ -1,2 +1,0 @@
-Artikelnummer; Arikelbezeichnung; Preis;
-58763; Game of Thrones Blu-Ray; 39.95 €;

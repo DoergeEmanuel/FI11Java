@@ -1,4 +1,0 @@
-Pizza1;3
-Pizza2;3.5
-Pizza3;4
-Pizza4;4.5
