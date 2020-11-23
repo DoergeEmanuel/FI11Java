@@ -282,9 +282,9 @@ public class Control
 			String zeile = null;
 			String[] values = null;
 			
-		//	Path datei = Paths.get("Kaufhaus/Kunden.txt");
-		//	BufferedReader in = Files.newBufferedReader(datei, StandardCharsets.UTF_8); 
-			BufferedReader in = new BufferedReader(new FileReader("Kaufhaus/Kunden.txt", StandardCharsets.UTF_8)); 
+			Path datei = Paths.get("Kaufhaus/Kunden.txt");
+			BufferedReader in = Files.newBufferedReader(datei, StandardCharsets.UTF_8); 
+		  //BufferedReader in = new BufferedReader(new FileReader("Kaufhaus/Kunden.txt", StandardCharsets.UTF_8)); 
 			try
 			{
 				while((zeile = in.readLine()) != null && zeile.length() != 0)
