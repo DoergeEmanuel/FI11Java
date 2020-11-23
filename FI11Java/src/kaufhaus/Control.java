@@ -15,9 +15,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.lang.Math;
+import java.net.URI;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.text.NumberFormat;
@@ -99,7 +101,7 @@ public class Control
 		}
 		catch(IOException e)
 		{
-			System.out.println("Die Datei konnte nicht gefunden werden");
+			System.out.println("Die Sortiment Datei kann nicht gelesen werden");
 		}
 	}
 	
@@ -280,14 +282,15 @@ public class Control
 			String zeile = null;
 			String[] values = null;
 			
-			//BufferedReader in = Files.newBufferedReader(Paths.get("Kaufhaus/Kunden.txt"), StandardCharsets.UTF_8); 
-		  BufferedReader in = new BufferedReader(new FileReader("Kaufhaus/Kunden.txt", StandardCharsets.UTF_8)); 
+		//	Path datei = Paths.get("Kaufhaus/Kunden.txt");
+		//	BufferedReader in = Files.newBufferedReader(datei, StandardCharsets.UTF_8); 
+			BufferedReader in = new BufferedReader(new FileReader("Kaufhaus/Kunden.txt", StandardCharsets.UTF_8)); 
 			try
 			{
 				while((zeile = in.readLine()) != null && zeile.length() != 0)
 				{
 					values = zeile.split("; ");
-					System.out.println(values[1]);
+					//System.out.println(values[1]);
 					bestellListe.add(new Bestellung(values[0], Integer.valueOf(values[1])));
 				}
 			}
@@ -302,7 +305,7 @@ public class Control
 		}
 		catch(IOException e)
 		{
-			System.out.println("Die Datei konnte nicht gefunden werden");
+			System.out.println("Noch gibt es nichts zu lesen");
 		}	
 	}
 
@@ -331,8 +334,8 @@ public class Control
 	{
 		try
 		{
-			//BufferedWriter out = Files.newBufferedWriter(Paths.get("Kaufhaus/Kunden.txt"), StandardOpenOption.WRITE); 
-		  BufferedWriter out = new BufferedWriter(new FileWriter("Kaufhaus/Kunden.txt", true));
+		//	BufferedWriter out = Files.newBufferedWriter(Paths.get("Kaufhaus/Kunden.txt"), StandardOpenOption.WRITE); 
+			BufferedWriter out = new BufferedWriter(new FileWriter("Kaufhaus/Kunden.txt", true));
 			
 			try
 			{
