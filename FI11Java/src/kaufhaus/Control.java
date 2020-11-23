@@ -231,8 +231,8 @@ public class Control
 			dateiNameErzeugen();
 			
 				
-			//BufferedWriter out = Files.newBufferedWriter(Paths.get(bestellung.getDatei()), StandardOpenOption.WRITE);
-			BufferedWriter out = new BufferedWriter(new FileWriter(bestellung.getDatei(), false));
+			  BufferedWriter out = Files.newBufferedWriter(Paths.get(bestellung.getDatei()), StandardOpenOption.CREATE);
+			//BufferedWriter out = new BufferedWriter(new FileWriter(bestellung.getDatei(), false));
 			try
 			{
 				//dateiSpeichern();
@@ -334,8 +334,8 @@ public class Control
 	{
 		try
 		{
-		//	BufferedWriter out = Files.newBufferedWriter(Paths.get("Kaufhaus/Kunden.txt"), StandardOpenOption.WRITE); 
-			BufferedWriter out = new BufferedWriter(new FileWriter("Kaufhaus/Kunden.txt", true));
+			BufferedWriter out = Files.newBufferedWriter(Paths.get("Kaufhaus/Kunden.txt"), StandardOpenOption.APPEND); 
+		//	BufferedWriter out = new BufferedWriter(new FileWriter("Kaufhaus/Kunden.txt", true));
 			
 			try
 			{
@@ -358,6 +358,7 @@ public class Control
 		catch(IOException e)
 		{
 			System.out.println("IOException");
+			
 		}		
 	}
 	
