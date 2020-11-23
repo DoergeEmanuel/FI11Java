@@ -338,7 +338,7 @@ public class Control
 			finally
 			{
 				out.close();
-				
+				JOptionPane.showMessageDialog(null,"Die Bestellung wurde erfolgreich aufgegeben!","Herzlichen Glückwunsch", JOptionPane.PLAIN_MESSAGE);
 			}
 			
 		}
