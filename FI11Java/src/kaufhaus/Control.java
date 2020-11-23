@@ -68,7 +68,7 @@ public class Control
 			String zeile = null;
 			String[] values;
 		
-		//	BufferedReader in = Files.newBufferedReader(Paths.get("Sortiment.txt")); ???
+		//	BufferedReader in = Files.newBufferedReader(Paths.get("Sortiment.txt")); 
 			BufferedReader in = new BufferedReader(new FileReader("Sortiment.txt")); 
 			
 			try
