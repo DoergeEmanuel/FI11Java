@@ -5,3 +5,5 @@ Kaufhaus/Bestellungen/f4.txt; 4
 Kaufhaus/Bestellungen/Emanuel5.txt; 5
 Kaufhaus/Bestellungen/Hans6.txt; 6
 Kaufhaus/Bestellungen/Muhammad7.txt; 7
+Kaufhaus/Bestellungen/d8.txt; 8
+Kaufhaus/Bestellungen/ew9.txt; 9

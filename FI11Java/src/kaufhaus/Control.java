@@ -18,6 +18,7 @@ import java.lang.Math;
 import java.net.URI;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.FileSystem;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -74,7 +75,6 @@ public class Control
 			String zeile = null;
 			String[] values;
 		
-			
 			Path datei = Paths.get("Kaufhaus/Sortiment.txt");
 			BufferedReader in = Files.newBufferedReader(datei , StandardCharsets.UTF_8); 
 		//	BufferedReader in = new BufferedReader(new FileReader("Kaufhaus/Sortiment.txt", StandardCharsets.UTF_8)); 
@@ -85,7 +85,7 @@ public class Control
 				while((zeile = in.readLine()) != null)
 				{
 					values = zeile.split("; ");
-					values[2] = values[2].replace(",", ".");
+					values[2] = values[2].replace(',', '.');
 					values[2] = values[2].replace("€", "");
 				//	System.out.println(values[0] + ";" + values[1] + ";" + values[2]);
 					listModelSortiment.addElement(new Sortiment(values[0],values[1], Double.valueOf(values[2])));
