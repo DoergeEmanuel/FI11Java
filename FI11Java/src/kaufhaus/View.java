@@ -2,6 +2,7 @@ package kaufhaus;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.Image;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -11,6 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.JList;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ItemListener;
 import java.awt.event.ItemEvent;
@@ -38,6 +40,7 @@ public class View extends JFrame
 	private JTextField textFieldPreisWarenkorb;
 	private JTextField textFieldKundenname;
 	private JButton buttonAbschicken;
+	private JLabel labelLogo;
 
 	
 	public View()
@@ -71,6 +74,7 @@ public class View extends JFrame
 		contentPane.add(getLabelKundenname());
 		contentPane.add(getTextFieldKundenname());
 		contentPane.add(getButtonAbschicken());
+		contentPane.add(getLabelLogo());
 		
 		
 		
@@ -209,5 +213,14 @@ public class View extends JFrame
 			textFieldPreisWarenkorb.setBounds(498, 273, 121, 20);
 		}
 		return textFieldPreisWarenkorb;
+	}
+	private JLabel getLabelLogo() {
+		if (labelLogo == null) {
+			ImageIcon ico = new ImageIcon("Kaufhaus/Nozama.jpg");
+            ico.setImage(ico.getImage().getScaledInstance(235,59,Image.SCALE_DEFAULT));
+			labelLogo = new JLabel(ico);
+			labelLogo.setBounds(10, 11, 235, 59);
+		}
+		return labelLogo;
 	}
 }
