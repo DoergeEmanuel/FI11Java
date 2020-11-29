@@ -147,6 +147,7 @@ public class Control
 			@Override
 			public void itemStateChanged(ItemEvent e) 
 			{
+				System.out.println("hallo");
 				waehlen(view.getComboBoxPizza().getSelectedItem(), view.getComboBoxGroesse().getSelectedItem());
 			}
 		};

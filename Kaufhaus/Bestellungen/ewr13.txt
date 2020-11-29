@@ -1,0 +1,2 @@
+Artikelnummer; Arikelbezeichnung; Preis
+25873; Playmobil Ritterburg; 123.95€

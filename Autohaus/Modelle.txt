@@ -1,0 +1,13 @@
+Model; Farbe; Ps; Preis
+Model S; blau; 70; 12.350
+Model S; schwarz; 90; 14.350
+Model S; schwarz; 120; 16.750
+Model S; weiß; 70; 13.950
+Model 3; schwarz; 120; 17.450
+Model 3; gelb; 120; 17.200
+Model 3; silber; 90; 18.400
+Semi; blau; 120; 19.450
+Semi; blau; 70; 18.300
+Roadster; weiß; 110; 20.450
+Roadster; weiß; 70; 18.700
+Roadster; schwarz; 80; 19.450
