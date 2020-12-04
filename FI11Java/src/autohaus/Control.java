@@ -24,6 +24,10 @@ public class Control
 	ArrayList<Model> arrayListModell;
 	
 	ItemListener waehle;
+	ItemListener waehle2;
+	
+	Model model;
+	Farbe farbe;
 	
 	public Control()
 	{
@@ -33,6 +37,7 @@ public class Control
 		modelFarbe = new DefaultComboBoxModel<Farbe>();
 		modelPs = new DefaultComboBoxModel<Ps>();
 		
+		arrayListModell = new ArrayList<Model>();
 		
 		fuelleInhalte();
 		
@@ -42,78 +47,186 @@ public class Control
 		
 		view.getComboBoxModell().setModel(modelModell);
 		view.getComboBoxFarbe().setModel(modelFarbe);
-		//view.getComboBoxPs().setModel(modelPs);
+		view.getComboBoxPs().setModel(modelPs);
 		
 		view.getComboBoxModell().addItemListener(waehle);
+		
+		
+		view.getComboBoxFarbe().addItemListener(waehle2);
+			
 	}
 	
 	private void setzeEventhandler()
-	{
-		
+	{	
 		waehle = new ItemListener()
 		{
 			@Override
 			public void itemStateChanged(ItemEvent e)
 			{
-				waehlen(view.getComboBoxModell().getSelectedItem());	
+				waehlen(view.getComboBoxModell().getSelectedItem());
+				
 			}
 		};
+		waehle2 = new ItemListener()
+		{
+			@Override
+			public void itemStateChanged(ItemEvent e)
+			{
+				if(view.getComboBoxFarbe().getSelectedItem() != null)
+				{
+					waehlen2(view.getComboBoxFarbe().getSelectedItem());
+				}
+					
+			}
+		};
+	}
+	private void waehlen2(Object o)
+	{	
+		
+		String name = model.getModel();
+		Farbe farbe = (Farbe) o;
+		String farbeString = farbe.getFarbe();
+		
+		ArrayList<Model> farbeList = new ArrayList<Model>();
+		ArrayList<Model> psList = new ArrayList<>();
+		
+		modelPs.removeAllElements();
+		psList.removeAll(farbeList);
+		
+		
+		
+		for(int i = 0; i < arrayListModell.size(); i++)
+		{
+			
+			if(arrayListModell.get(i).getModel().equals(name))
+			{
+				//System.out.println(arrayListModell.get(i).getModel());
+				farbeList.add(arrayListModell.get(i));
+			}
+			
+		}
+		
+		
+		for(int i = 0; i < farbeList.size(); i++)
+		{
+			System.out.println(farbeList.get(i).getModel() + " - " + farbeList.get(i).getFarbe().getFarbe() + " - " + farbeList.get(i).getPs().getPs());
+			if(farbeList.get(i).getFarbe().getFarbe().equals(farbeString))
+			{
+				System.out.println("Hier -> " + farbeList.get(i).getModel() + " - " + farbeList.get(i).getFarbe().getFarbe() + " - " + farbeList.get(i).getPs().getPs());
+				psList.add(farbeList.get(i));
+			}
+		}
+		System.out.println("Ende");
+		for(Model item: psList)
+		{
+		//	System.out.println(modelModell.getElementAt(i).getModel());
+			modelPs.addElement(item.getPs());
+			
+		}
+		
 	}
 	
 	private void waehlen(Object o)
 	{	
-		Model model = (Model) o;
-		
+		model = (Model) o;
 		String name = model.getModel();
+		ArrayList<Model> farbeList = new ArrayList<Model>();
+		ArrayList<Model> farbeList2 = new ArrayList<Model>();
 		
 		modelFarbe.removeAllElements();
+		farbeList.removeAll(farbeList);
+		
+		
 		
 		for(int i = 0; i < arrayListModell.size(); i++)
 		{
-			if(name.equals(arrayListModell.get(i).getModel()))
+			
+			if(arrayListModell.get(i).getModel().equals(name))
 			{
-				
 				//System.out.println(arrayListModell.get(i).getModel());
-				modelFarbe.addElement(arrayListModell.get(i).getFarbe());
+				farbeList.add(arrayListModell.get(i));
 			}
+			
 		}
-		//System.out.println(modelFarbe.getSize());
-		
-		for(int i = 0; i < modelFarbe.getSize(); i++)
+		//System.out.println(farbeList.size());
+			
+		for(int i = 0; i < farbeList.size(); i++)
 		{
-			for(int j = i + 1; j < modelFarbe.getSize(); j++)
+			
+			for(int j = i + 1; j < farbeList.size(); j++)
 			{
 				
-				if(modelFarbe.getElementAt(i).getFarbe().equals(modelFarbe.getElementAt(j).getFarbe()))
+				if(farbeList.get(i).getFarbe().getFarbe().equals(farbeList.get(j).getFarbe().getFarbe()))
 				{
-					System.out.println(modelFarbe.getElementAt(i).getFarbe() + " - " + modelFarbe.getElementAt(j).getFarbe());
-					modelFarbe.removeElementAt(i);
+				//	System.out.println(farbeList.get(i).getFarbe() +"  hier");
+					farbeList2.add(farbeList.get(i));
 				}
 			}
 		}
+		//System.out.println("Ende");
+		/*
+		if(arrayListModell.get(i).getModel().equals(name))
+		{
+			
+		}
+		*/
+		//System.out.println(farbeList.size());
+		/*
+		for(int i = 0; i < farbeList.size(); i++)
+		{
+			//System.out.println(farbeList.get(i));
+		}
+		*/
 		
-		//System.out.println(modelFarbe.getSize());
+		for(Model item: farbeList2)
+		{
+			
+			farbeList.remove(item);
+			
+		}
+		
+		for(Model item: farbeList)
+		{
+		//	System.out.println(modelModell.getElementAt(i).getModel());
+			modelFarbe.addElement(item.getFarbe());
+			
+		}
 	}
 	
 	private void fuelleInhalte()
 	{
-		ArrayList<Model> zwischen;
 		lesen();
+		ArrayList<Model> modelList = new ArrayList<Model>();
+		
+		
 		
 		for(Model item: arrayListModell)
 		{
+			
 			modelModell.addElement(item);
 		}	
 		
-		for(int i = 0; i < modelModell.getSize(); i++)
+		//System.out.println(arrayListModell.size());
+		for(int i = 0; i < arrayListModell.size(); i++)
 		{
-			for(int j = i; j < modelModell.getSize(); j++)
+			for(int j = i + 1; j < arrayListModell.size(); j++)
 			{
-				System.out.println(modelModell.getElementAt(i).getModel() + " - " + modelModell.getElementAt(j).getModel());
-				if(modelModell.getElementAt(i).getModel().equals(modelModell.getElementAt(j).getModel()))
+				//System.out.println(i + " - " + j);
+				//System.out.println(arrayListModell.get(i).getModel() + " - " + arrayListModell.get(j).getModel());
+				if(arrayListModell.get(i).getModel().equals(arrayListModell.get(j).getModel()))
 				{
-					modelModell.removeElementAt(i);
+					modelList.add((arrayListModell.get(i)));
 				}
+			}
+		}
+	
+		for(Model item: arrayListModell)
+		{
+		
+		//	System.out.println(modelModell.getElementAt(i).getModel());
+			if(modelList.contains(item))
+			{
+				modelModell.removeElement(item);
 			}
 		}
 		
@@ -124,7 +237,7 @@ public class Control
 		{
 			String zeile;
 			String[] values;
-			arrayListModell = new ArrayList<Model>();
+			
 			
 			BufferedReader in = new BufferedReader(new FileReader("Autohaus/Modelle.txt", StandardCharsets.UTF_8));
 			
@@ -136,15 +249,9 @@ public class Control
 					values = zeile.split("; ");
 					Farbe farbe = new Farbe(values[1]);
 					Ps ps = new Ps(Integer.valueOf(values[2]), Double.valueOf(values [3]));
-					//System.out.println(values[0]);
 					Model model = new Model(values[0], farbe , ps);
 					
 					arrayListModell.add(model);
-					/*
-					modelFarbe.addElement(farbe);
-					modelPs.addElement(ps);
-					modelModell.addElement(model);
-					*/
 				}
 			}
 			catch(IOException ex)
