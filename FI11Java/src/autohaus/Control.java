@@ -1,5 +1,7 @@
 package autohaus;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.io.BufferedReader;
@@ -10,6 +12,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.DefaultListModel;
 
 import kaufhaus.Sortiment;
 
@@ -20,11 +23,17 @@ public class Control
 	DefaultComboBoxModel<Model> modelModell;
 	DefaultComboBoxModel<Farbe> modelFarbe;
 	DefaultComboBoxModel<Ps> modelPs;
+	DefaultComboBoxModel<Extras> modelExtras;
+	DefaultListModel<Bestellung> modelBestellung;
 	
 	ArrayList<Model> arrayListModell;
+	ArrayList<Model> psList;
+	ArrayList<Model> psList2;
 	
 	ItemListener waehle;
 	ItemListener waehle2;
+	ItemListener waehle3;
+	ActionListener bestaetige;
 	
 	Model model;
 	Farbe farbe;
@@ -36,8 +45,11 @@ public class Control
 		modelModell = new DefaultComboBoxModel<Model>();
 		modelFarbe = new DefaultComboBoxModel<Farbe>();
 		modelPs = new DefaultComboBoxModel<Ps>();
+		modelExtras = new DefaultComboBoxModel<Extras>();
+		modelBestellung = new DefaultListModel<Bestellung>();
 		
 		arrayListModell = new ArrayList<Model>();
+		
 		
 		fuelleInhalte();
 		
@@ -48,11 +60,16 @@ public class Control
 		view.getComboBoxModell().setModel(modelModell);
 		view.getComboBoxFarbe().setModel(modelFarbe);
 		view.getComboBoxPs().setModel(modelPs);
+		view.getComboBoxExtras().setModel(modelExtras);
+		view.getListBestellung().setModel(modelBestellung);
 		
 		view.getComboBoxModell().addItemListener(waehle);
 		
+		view.getButtonBestaetigen().addActionListener(bestaetige);
 		
 		view.getComboBoxFarbe().addItemListener(waehle2);
+		
+		view.getComboBoxPs().addItemListener(waehle3);
 			
 	}
 	
@@ -79,7 +96,78 @@ public class Control
 					
 			}
 		};
+		
+		waehle3 = new ItemListener()
+		{
+			@Override
+			public void itemStateChanged(ItemEvent e)
+			{
+				if(view.getComboBoxPs().getSelectedItem() != null)
+				{
+					waehlen3(view.getComboBoxPs().getSelectedItem());
+				}
+					
+			}
+		};
+		
+		bestaetige = new ActionListener()
+		{
+			
+			@Override
+			public void actionPerformed(ActionEvent e)
+			{
+				bestaetigen();
+				
+			}
+		};
 	}
+	private void bestaetigen()
+	{
+		Bestellung bestellung;
+		for(Model item : psList2)
+		{
+			Extras extras = (Extras)view.getComboBoxExtras().getSelectedItem();
+			bestellung = new Bestellung(item, item.getFarbe(), item.getPs(), extras);
+			bestellung.berechneGesamtpreis();
+			modelBestellung.addElement(bestellung);
+		}
+		
+	}
+	
+	private void waehlen3(Object o)
+	{
+		Ps ps = (Ps) o;
+		
+		ArrayList<Model> ersatz = new ArrayList<Model>();
+		psList2 = new ArrayList<Model>();
+		
+		
+		for(Model item: psList)
+		{
+			psList2.add(item);
+		}
+		
+		System.out.println(psList.size());
+		
+		for(int i = 0; i < psList.size(); i++)
+		{
+			if(psList.get(i).getPs().getPs() != ps.getPs())
+			{
+				System.out.println(psList.get(i).getPs() + "hallo");
+				ersatz.add(psList.get(i));
+			}
+			
+		}
+		System.out.println(ersatz.get(0).getPs().getPs() + " dort ja ja");
+		
+		for(Model item : ersatz)
+		{
+			System.out.println(item);
+			psList2.remove(item);
+		}
+		
+	}
+	
 	private void waehlen2(Object o)
 	{	
 		
@@ -88,7 +176,7 @@ public class Control
 		String farbeString = farbe.getFarbe();
 		
 		ArrayList<Model> farbeList = new ArrayList<Model>();
-		ArrayList<Model> psList = new ArrayList<>();
+		psList = new ArrayList<>();
 		
 		modelPs.removeAllElements();
 		psList.removeAll(farbeList);
@@ -103,7 +191,6 @@ public class Control
 				//System.out.println(arrayListModell.get(i).getModel());
 				farbeList.add(arrayListModell.get(i));
 			}
-			
 		}
 		
 		
@@ -198,6 +285,8 @@ public class Control
 		lesen();
 		ArrayList<Model> modelList = new ArrayList<Model>();
 		
+		modelExtras.addElement(new Extras("Navigationsgeraet", 300));
+		modelExtras.addElement(new Extras("BoseSoundSystem", 1300));
 		
 		
 		for(Model item: arrayListModell)

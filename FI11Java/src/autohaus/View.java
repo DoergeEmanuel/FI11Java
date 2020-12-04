@@ -20,7 +20,7 @@ import java.awt.event.ItemEvent;
 public class View extends JFrame {
 
 	private JPanel contentPane;
-	private JList list;
+	private JList listBestellung;
 	private JLabel labelLogo;
 	private JLabel labelAuswahl;
 	private JLabel labelModel;
@@ -56,7 +56,7 @@ public class View extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		contentPane.add(getList());
+		contentPane.add(getListBestellung());
 		contentPane.add(getLabelLogo());
 		contentPane.add(getLabelAuswahl());
 		contentPane.add(getLabelModel());
@@ -77,12 +77,12 @@ public class View extends JFrame {
 		contentPane.add(getButtonBestellen());
 		
 	}
-	private JList getList() {
-		if (list == null) {
-			list = new JList();
-			list.setBounds(281, 66, 320, 134);
+	protected JList getListBestellung() {
+		if (listBestellung == null) {
+			listBestellung = new JList();
+			listBestellung.setBounds(281, 66, 320, 134);
 		}
-		return list;
+		return listBestellung;
 	}
 	
 	private JLabel getLabelLogo() 
@@ -153,14 +153,14 @@ public class View extends JFrame {
 		}
 		return comboBoxPs;
 	}
-	private JComboBox getComboBoxExtras() {
+	protected JComboBox getComboBoxExtras() {
 		if (comboBoxExtras == null) {
 			comboBoxExtras = new JComboBox();
 			comboBoxExtras.setBounds(74, 252, 164, 22);
 		}
 		return comboBoxExtras;
 	}
-	private JButton getButtonBestaetigen() {
+	protected JButton getButtonBestaetigen() {
 		if (buttonBestaetigen == null) {
 			buttonBestaetigen = new JButton("Auswahl best\u00E4tigen");
 			buttonBestaetigen.setBounds(10, 325, 228, 23);
