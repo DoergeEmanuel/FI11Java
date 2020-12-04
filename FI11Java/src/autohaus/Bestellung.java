@@ -32,7 +32,7 @@ public class Bestellung
 	@Override
 	public String toString()
 	{
-		return model + " " + farbe + " " + ps + " " + gesamtpreis;
+		return model + " " + farbe + " " + ps + " " + extras + " " + gesamtpreis + " Euro";
 	}
 	
 	

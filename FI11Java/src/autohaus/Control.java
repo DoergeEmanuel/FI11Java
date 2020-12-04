@@ -104,7 +104,14 @@ public class Control
 			{
 				if(view.getComboBoxPs().getSelectedItem() != null)
 				{
-					waehlen3(view.getComboBoxPs().getSelectedItem());
+					if(psList.size() > 1)
+					{
+						waehlen3(view.getComboBoxPs().getSelectedItem());
+					}	
+					else
+					{
+						psList2 = psList;
+					}
 				}
 					
 			}
@@ -136,6 +143,7 @@ public class Control
 	
 	private void waehlen3(Object o)
 	{
+		
 		Ps ps = (Ps) o;
 		
 		ArrayList<Model> ersatz = new ArrayList<Model>();
@@ -144,10 +152,15 @@ public class Control
 		
 		for(Model item: psList)
 		{
+		
 			psList2.add(item);
+			
 		}
 		
 		System.out.println(psList.size());
+		
+		
+		
 		
 		for(int i = 0; i < psList.size(); i++)
 		{
@@ -159,6 +172,7 @@ public class Control
 			
 		}
 		System.out.println(ersatz.get(0).getPs().getPs() + " dort ja ja");
+		
 		
 		for(Model item : ersatz)
 		{

@@ -18,7 +18,10 @@ public class Extras
 		return preis;
 	}
 
-
+	public String getBezeichnung()
+	{
+		return bezeichnung;
+	}
 
 	@Override
 	public String toString()
