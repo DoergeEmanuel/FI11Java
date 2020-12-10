@@ -41,6 +41,7 @@ public class View extends JFrame
 	private JTextField textFieldKundenname;
 	private JButton buttonAbschicken;
 	private JLabel labelLogo;
+	private JButton buttonAnzeigen;
 
 	
 	public View()
@@ -75,6 +76,7 @@ public class View extends JFrame
 		contentPane.add(getTextFieldKundenname());
 		contentPane.add(getButtonAbschicken());
 		contentPane.add(getLabelLogo());
+		contentPane.add(getButtonAnzeigen());
 		
 		
 		
@@ -222,5 +224,12 @@ public class View extends JFrame
 			labelLogo.setBounds(10, 11, 235, 59);
 		}
 		return labelLogo;
+	}
+	protected JButton getButtonAnzeigen() {
+		if (buttonAnzeigen == null) {
+			buttonAnzeigen = new JButton("Bestellung anzeigen");
+			buttonAnzeigen.setBounds(385, 27, 234, 33);
+		}
+		return buttonAnzeigen;
 	}
 }

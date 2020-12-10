@@ -5,6 +5,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 
 import javax.swing.DefaultListModel;
@@ -78,20 +80,26 @@ public class Serializer extends Dateihandler
 		try 
 		{
 			FileInputStream fis = new FileInputStream(pfad);
+			System.out.println(pfad);
 			ObjectInputStream ois = new ObjectInputStream(fis);
+			
+			
 			
 			try
 			{
-				while(ois != null)
-				{
-					Sortiment sortiment = (Sortiment) ois.readObject();
-					liste.addElement(sortiment);
-				}
+			
+			
+				liste = (DefaultListModel<Sortiment>) ois.readObject();
+				//Object[] array = (Object[]) ois.readObject();
+				
+					
+				System.out.println("hallo");
 				return liste;
 			}
 			catch(IOException | ClassNotFoundException ex)
 			{
 				System.out.println(ex);
+				System.out.println("achtung");
 				return null;
 			}
 			finally

@@ -19,3 +19,4 @@ Kaufhaus/Bestellungen/Knopf18.txt; 18
 Kaufhaus/Bestellungen/Hubert19.txt; 19
 Kaufhaus/Bestellungen/520.txt; 20
 Kaufhaus/Bestellungen/de21.txt; 21
+Kaufhaus/Bestellungen/Hanswurscht22.txt; 22

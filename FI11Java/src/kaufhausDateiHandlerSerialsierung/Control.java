@@ -33,13 +33,17 @@ import javax.swing.ListModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+import tankstellensoftware.ViewAnzeige;
+
 
 public class Control
 {
 	View view;
+	ViewAnzeigen viewAnzeigen;
 	ViewErfolg viewErfolg;
 	ActionListener hinzu;
 	ActionListener raus;
+	ActionListener zeigeAn;
 	ListSelectionListener waehleSortiment;
 	ListSelectionListener waehleWarenkorb;
 	ActionListener speichere;
@@ -53,6 +57,7 @@ public class Control
 	
 	private DefaultListModel<Sortiment> listModelSortiment;
 	private DefaultListModel<Sortiment> listModelWarenkorb;
+	private DefaultListModel<Sortiment> listModelBestellung;
 	
 	public Control()
 	{
@@ -60,6 +65,7 @@ public class Control
 		
 		listModelSortiment = new DefaultListModel<Sortiment>();
 		listModelWarenkorb = new DefaultListModel<Sortiment>();
+		listModelBestellung = new DefaultListModel<Sortiment>();
 		bestellListe = new ArrayList<Bestellung>();
 		
 		fuelleInhalte();
@@ -67,6 +73,15 @@ public class Control
 		
 		view.getListSortiment().setModel(listModelSortiment);
 		view.getListWarenkorb().setModel(listModelWarenkorb);
+		view.getListWarenkorb().setModel(listModelBestellung);
+		
+		view.getListSortiment().addListSelectionListener(waehleSortiment);
+		view.getListWarenkorb().addListSelectionListener(waehleWarenkorb);
+		view.getButtonRein().addActionListener(hinzu);
+		view.getButtonRaus().addActionListener(raus);
+		view.getButtonAbschicken().addActionListener(speichere);
+		view.getButtonAnzeigen().addActionListener(zeigeAn);
+		
 	}
 	private void fuelleInhalte()
 	{
@@ -94,7 +109,7 @@ public class Control
 				
 			}
 		};
-		view.getListSortiment().addListSelectionListener(waehleSortiment);
+		
 		
 		waehleWarenkorb = new ListSelectionListener() 
 		{
@@ -108,7 +123,7 @@ public class Control
 				view.getTextFieldPreisWarenkorb().setText(format.format(preis));
 			}
 		};
-		view.getListWarenkorb().addListSelectionListener(waehleWarenkorb);
+		
 		
 		
 		hinzu = new ActionListener()
@@ -118,7 +133,7 @@ public class Control
 				hinzufuegen(view.getListSortiment().getSelectedValuesList());
 			}
 		};
-		view.getButtonRein().addActionListener(hinzu);
+		
 		
 		raus = new ActionListener()
 		{
@@ -127,7 +142,7 @@ public class Control
 				loeschen(view.getListWarenkorb().getSelectedValuesList());
 			}
 		};
-		view.getButtonRaus().addActionListener(raus);
+		
 		
 		speichere = new ActionListener() 
 		{
@@ -148,10 +163,25 @@ public class Control
 			}
 		};
 		
-		view.getButtonAbschicken().addActionListener(speichere);
+		zeigeAn = new ActionListener()
+		{
+			public void actionPerformed(ActionEvent e)
+			{
+				anzeigen();
+				viewAnzeigen = new ViewAnzeigen();
+			}
+		};
 	}
 	
-	
+	private void anzeigen()
+	{
+		String pfad = "Kaufhaus/Bestellungen/Hanswurscht22.txt";
+		Serializer serializer = new Serializer();
+		
+		listModelBestellung = serializer.lesenDefaultListModelSortiment(pfad);
+		
+		
+	}
 	
 	private void hinzufuegen(List<Sortiment> liste)
 	{
