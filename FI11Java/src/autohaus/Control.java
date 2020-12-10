@@ -36,7 +36,7 @@ public class Control
 	ActionListener bestaetige;
 	
 	Model model;
-	Farbe farbe;//hallo
+	Farbe farbe;
 	
 	public Control()
 	{
