@@ -21,7 +21,7 @@ public class Serializer extends Dateihandler
 	@Override
 	public boolean schreibenDefaultListModelSortiment(String pfad, DefaultListModel<Sortiment> listModelWarenkorb)
 	{
-		
+		/*
 		try 
 		{
 			FileOutputStream fos = new FileOutputStream (pfad, false);
@@ -44,7 +44,23 @@ public class Serializer extends Dateihandler
 			finally
 			{
 				oos.close();
+				fos.close();
 			}
+		}
+		catch (IOException e)
+		{
+			System.out.println("Die Sortiment Datei kann nicht gespeichert werden");
+			return false;
+		}	
+		*/
+		
+		try (FileOutputStream fos = new FileOutputStream (pfad, false);
+				ObjectOutputStream oos = new ObjectOutputStream (fos))
+		{		
+				
+				oos.writeObject(listModelWarenkorb);
+				
+				return true;
 		}
 		catch (IOException e)
 		{
@@ -73,6 +89,8 @@ public class Serializer extends Dateihandler
 			return null;
 		}		
 		*/
+		
+		/*
 		DefaultListModel<Sortiment> liste;
 		
 		liste = new DefaultListModel<Sortiment>();
@@ -105,6 +123,7 @@ public class Serializer extends Dateihandler
 			finally
 			{
 				ois.close();
+				fis.close();
 			}
 		
 		}
@@ -114,8 +133,32 @@ public class Serializer extends Dateihandler
 			e.printStackTrace();
 			return null;
 		}
+		*/
+		
+		DefaultListModel<Sortiment> liste;
+		
+		liste = new DefaultListModel<Sortiment>();
+		
+		try (FileInputStream fis = new FileInputStream(pfad);
+				ObjectInputStream ois = new ObjectInputStream(fis))
+		{
+			
+			
+				liste = (DefaultListModel<Sortiment>) ois.readObject();
+				//System.out.println(liste.getElementAt(3));
+				return liste;
+			
+		
+		}
+		catch (ClassNotFoundException | IOException e) 
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+		
 	}
-
+	
 	
 	
 	

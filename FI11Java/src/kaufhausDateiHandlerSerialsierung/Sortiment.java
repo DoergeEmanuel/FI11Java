@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 public class Sortiment implements Serializable
 {
+	private static final long serialVersionUID = 1L;
+	
 	String artikelnummer;
 	String artikelbezeichnung;
 	double preis;

@@ -27,6 +27,7 @@ import java.text.NumberFormat;
 import static javax.swing.JOptionPane.showMessageDialog;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.ListModel;
@@ -73,7 +74,7 @@ public class Control
 		
 		view.getListSortiment().setModel(listModelSortiment);
 		view.getListWarenkorb().setModel(listModelWarenkorb);
-		view.getListWarenkorb().setModel(listModelBestellung);
+		
 		
 		view.getListSortiment().addListSelectionListener(waehleSortiment);
 		view.getListWarenkorb().addListSelectionListener(waehleWarenkorb);
@@ -169,18 +170,23 @@ public class Control
 			{
 				anzeigen();
 				viewAnzeigen = new ViewAnzeigen();
+				viewAnzeigen.getListWarenkorb().setModel(listModelBestellung);
 			}
 		};
 	}
 	
 	private void anzeigen()
 	{
-		String pfad = "Kaufhaus/Bestellungen/Hanswurscht22.txt";
-		Serializer serializer = new Serializer();
+		JFileChooser chooser = new JFileChooser();
+		File file = new File("Kaufhaus/Bestellungen");
+		chooser.setCurrentDirectory(file);
+		chooser.showOpenDialog(null);
+		String pfad = chooser.getSelectedFile().toString();
 		
-		listModelBestellung = serializer.lesenDefaultListModelSortiment(pfad);
 		
+		Dateihandler h = new Serializer();
 		
+		listModelBestellung = h.lesenDefaultListModelSortiment(pfad);
 	}
 	
 	private void hinzufuegen(List<Sortiment> liste)
@@ -225,8 +231,8 @@ public class Control
 		dateiNameErzeugen();
 
 		String pfad = bestellung.getDatei();
-		Serializer serializer = new Serializer();
-		erfolg = serializer.schreibenDefaultListModelSortiment(pfad, listModelWarenkorb);
+		Dateihandler h = new Serializer();
+		erfolg = h.schreibenDefaultListModelSortiment(pfad, listModelWarenkorb);
 	
 		if(erfolg == true)
 		{
