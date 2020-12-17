@@ -38,3 +38,4 @@ public class BierNamenInhaltComparator implements Comparator<Bier>
 		return bier1.getName().compareTo(bier2.getName()); //-1 heißt das zweite Objekt (bier2) ist übergeordnet, -1 bedeutet das zweite Objekt ist am Ende der Auflistung also unter Z
 	}
 }
+

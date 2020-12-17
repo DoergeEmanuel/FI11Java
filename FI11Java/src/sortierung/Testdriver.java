@@ -57,14 +57,18 @@ public class Testdriver
 		}
 		*/
 		
+		
+		
+		
+		/*
 		Bier[] biere =
 			{
 					new Bier("Würzburger Hofbräu", "Würzburg", 0.25F),
-					new Bier(null, "Bremen", 0.24F),
-					new Bier(null, "Bremen", 0.13F),
+					new Bier("hase", "Bremen", 0.24F),
+					new Bier("hase", "Bremen", 0.13F),
 					new Bier("Pbulaner", "München", 25F),
 					new Bier("Paulaner", "München", 0.5F),
-					new Bier(null, "Bremen", 0.23F),
+					new Bier("hase", "Bremen", 0.23F),
 					new Bier ("Distelhäuser", "Distelhausen", 0.73F),
 					new Bier ("Aistelhäuser", "Distelhausen", 0.53F)
 			};
@@ -84,18 +88,65 @@ public class Testdriver
 		{
 			System.out.println(bier);
 		}
-	
-		/*
-		Comparator<Bier> comp = new BierNamenInhaltComparator();
+		*/
 		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		//das...
+		//Comparator<Bier> comp = new BierNamenInhaltComparator();
+		
+		/*oder das...
+		Comparator<Bier> comp = (bier1, bier2) -> 
+		{	
+			
+			if(bier2.getName() == null && bier1.getName() == null)
+			{
+				return 0;
+			}
+			if(bier1.getName() == null)
+			{
+				return 1;
+			}
+			if(bier2.getName() == null)
+			{
+				return -1;
+			}
+			if(bier1.getName().compareTo(bier2.getName()) == 0)
+			{
+				if(bier1.getInhalt() == null && bier2.getInhalt() == 0)
+				{
+					return 0;
+				}
+				if(bier1.getInhalt() == null)
+				{
+					return 1;
+				}
+				if(bier2.getInhalt() == null)
+				{
+					return -1;
+				}
+				return bier1.getInhalt().compareTo(bier2.getInhalt()); 
+			}
+			return bier1.getName().compareTo(bier2.getName());
+		};
+		*/
+		
+		/*
 		Bier[] biere =
 			{
 					new Bier("Würzburger Hofbräu", "Würzburg", 0.25F),
-					new Bier(null, "Bremen", 0.24F),
-					new Bier(null, "Bremen", 0.13F),
+					new Bier("hase", "Bremena", 0.24F),
+					new Bier("hase", "Bremenc", 0.13F),
 					new Bier("Pbulaner", "München", 25F),
 					new Bier("Paulaner", "München", 0.5F),
-					new Bier(null, "Bremen", 0.23F),
+					new Bier("hase", "Bremenb", 0.23F),
 					new Bier ("Distelhäuser", "Distelhausen", 0.73F),
 					new Bier ("Aistelhäuser", "Distelhausen", 0.53F)
 			};
@@ -114,7 +165,10 @@ public class Testdriver
 		for(Bier bier : biere)
 		{
 			System.out.println(bier);
-		}
+		}	
 		*/
+		
 	}
+
+	
 }

@@ -79,6 +79,7 @@ public class Control
 		view.getListSortiment().addListSelectionListener(waehleSortiment);
 		view.getListWarenkorb().addListSelectionListener(waehleWarenkorb);
 		view.getButtonRein().addActionListener(hinzu);
+		
 		view.getButtonRaus().addActionListener(raus);
 		view.getButtonAbschicken().addActionListener(speichere);
 		view.getButtonAnzeigen().addActionListener(zeigeAn);
@@ -92,7 +93,6 @@ public class Control
 		String path = "Kaufhaus/Sortiment.txt";
 		listModelSortiment = dhnio.lesenDefaultListModelSortiment(path);	
 	}
-	
 	
 	private void setzeListener()
 	{
@@ -126,7 +126,7 @@ public class Control
 		};
 		
 		
-		
+		/*
 		hinzu = new ActionListener()
 		{
 			public void actionPerformed(ActionEvent e) 
@@ -134,6 +134,12 @@ public class Control
 				hinzufuegen(view.getListSortiment().getSelectedValuesList());
 			}
 		};
+		*/
+		 
+		 hinzu = (e) -> 
+		 {
+			 hinzufuegen(view.getListSortiment().getSelectedValuesList());
+		 };
 		
 		
 		raus = new ActionListener()
