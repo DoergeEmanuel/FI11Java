@@ -22,6 +22,7 @@ public abstract class Dateihandler
 	protected BufferedWriter out;
 	protected DefaultListModel<Sortiment> listModelSortiment;
 	ArrayList<Bestellung> bestellListe;
+	ArrayList<String> liste;
 
 
 	public Dateihandler() 
@@ -37,6 +38,7 @@ public abstract class Dateihandler
 	public abstract ArrayList<Bestellung> lesenArrayListBestellung(String pfad);
 	
 	public abstract boolean schreibeBestellung(String pfad, Bestellung bestellung);
+	
 	
 	
 	public boolean schreibeBestellung2(Bestellung bestellung)
@@ -102,6 +104,8 @@ public abstract class Dateihandler
 			return null;
 		}	
 	}
+	
+	
 
 	protected DefaultListModel<Sortiment> lesenDefaultListModel2() 
 	{
