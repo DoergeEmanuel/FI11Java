@@ -22,7 +22,6 @@ public abstract class Dateihandler
 	protected BufferedWriter out;
 	protected DefaultListModel<Sortiment> listModelSortiment;
 	ArrayList<Bestellung> bestellListe;
-	ArrayList<String> liste;
 
 
 	public Dateihandler() 

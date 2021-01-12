@@ -21,3 +21,4 @@ Kaufhaus/Bestellungen/520.txt; 20
 Kaufhaus/Bestellungen/de21.txt; 21
 Kaufhaus/Bestellungen/Hanswurscht22.txt; 22
 Kaufhaus/Bestellungen/1versuch23.txt; 23
+Kaufhaus/Bestellungen/e24.txt; 24
