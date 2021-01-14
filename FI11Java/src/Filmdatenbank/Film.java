@@ -79,6 +79,7 @@ public class Film
 	@Override
 	public boolean equals(Object obj)
 	{
+		
 		if(!(obj instanceof Film))
 		{
 			return false;
@@ -87,6 +88,7 @@ public class Film
 		{
 			return true;
 		}
+		
 		Film film = (Film)obj;
 		
 		return film.getTitel().equals(getTitel()) &&

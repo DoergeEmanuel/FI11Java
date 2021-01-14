@@ -112,6 +112,12 @@ public class Control
 	private void genreWaehlen(Object o)
 	{
 		String genreText = (String) o;
+		
+		if(arrayListFilmeZurueck.size() > arrayListFilme2.size())
+		{
+			anfangen();
+		}
+		
 		listModelFilme.removeAllElements();
 		for(int i = 0; i < arrayListFilme2.size(); i++)
 		{
@@ -139,10 +145,17 @@ public class Control
 			zaehler = 0;
 			for(int j = i; j < arrayListFilme.size(); j++)
 			{
+				
 				if(arrayListFilme.get(i).equals(arrayListFilme.get(j)))
 				{
 					zaehler++;
 				}
+				/*
+				if(arrayListFilme.get(i).hashCode() == arrayListFilme.get(j).hashCode())
+				{
+					zaehler++;
+				}
+				*/
 			}
 			if(zaehler < 2)
 			{
