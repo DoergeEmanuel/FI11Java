@@ -100,7 +100,7 @@ public class Testdriver
 		
 		
 		//das...
-		//Comparator<Bier> comp = new BierNamenInhaltComparator();
+		Comparator<Bier> comp = new BierNamenInhaltComparator();
 		
 		/*oder das...
 		Comparator<Bier> comp = (bier1, bier2) -> 
@@ -138,7 +138,7 @@ public class Testdriver
 		};
 		*/
 		
-		/*
+		
 		Bier[] biere =
 			{
 					new Bier("Würzburger Hofbräu", "Würzburg", 0.25F),
@@ -166,7 +166,7 @@ public class Testdriver
 		{
 			System.out.println(bier);
 		}	
-		*/
+		
 		
 	}
 

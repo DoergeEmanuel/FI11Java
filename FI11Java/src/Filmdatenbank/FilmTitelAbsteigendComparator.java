@@ -21,6 +21,6 @@ public class FilmTitelAbsteigendComparator implements Comparator<Film>
 			return -1;
 		}
 		
-		return film1.getTitel().compareTo(film2.getTitel()); //-1 heißt das zweite Objekt (bier2) ist übergeordnet, -1 bedeutet das zweite Objekt ist am Ende der Auflistung also unter Z, das erste Objekt ist bei -1 größer das zweite kleiner
+		return film2.getTitel().compareTo(film1.getTitel()); //-1 heißt das zweite Objekt (bier2) ist übergeordnet, -1 bedeutet das zweite Objekt ist am Ende der Auflistung also unter Z, das erste Objekt ist bei -1 größer das zweite kleiner
 	}
 }
