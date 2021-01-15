@@ -2,14 +2,18 @@ package Filmdatenbank;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.Image;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JList;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import java.awt.Color;
 
 public class ViewFilm extends JFrame
 {
@@ -24,6 +28,9 @@ public class ViewFilm extends JFrame
 	private JComboBox comboBox;
 	private JButton buttonTitelAbsteigend;
 	private JButton buttonTitelAufsteigend;
+	private JLabel labelBild;
+	private JPanel panel;
+	private JPanel panel_1;
 
 	
 	public ViewFilm()
@@ -48,6 +55,8 @@ public class ViewFilm extends JFrame
 		contentPane.add(getComboBox());
 		contentPane.add(getButtonTitelAbsteigend());
 		contentPane.add(getButtonTitelAufsteigend());
+		contentPane.add(getPanel());
+		contentPane.add(getPanel_1());
 	}
 	protected JList getListFilme() {
 		if (listFilme == null) {
@@ -112,5 +121,30 @@ public class ViewFilm extends JFrame
 			buttonTitelAufsteigend.setBounds(567, 136, 150, 23);
 		}
 		return buttonTitelAufsteigend;
+	}
+	protected JLabel getLabelBild() {
+		if (labelBild == null) {
+			
+           
+			labelBild = new JLabel();
+			labelBild.setBackground(Color.LIGHT_GRAY);
+		}
+		return labelBild;
+	}
+	private JPanel getPanel() {
+		if (panel == null) {
+			panel = new JPanel();
+			panel.setBounds(445, 11, 168, 129);
+		}
+		return panel;
+	}
+	private JPanel getPanel_1() {
+		if (panel_1 == null) {
+			panel_1 = new JPanel();
+			panel_1.setBackground(Color.LIGHT_GRAY);
+			panel_1.setBounds(434, 337, 113, 111);
+			panel_1.add(getLabelBild());
+		}
+		return panel_1;
 	}
 }

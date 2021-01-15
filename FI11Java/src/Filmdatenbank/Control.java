@@ -1,5 +1,6 @@
 package Filmdatenbank;
 
+import java.awt.Image;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemListener;
 import java.util.ArrayList;
@@ -11,6 +12,8 @@ import java.util.stream.Collectors;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
+import javax.swing.ImageIcon;
+import javax.swing.event.ListSelectionListener;
 
 public class Control
 {
@@ -26,6 +29,7 @@ public class Control
 	private ActionListener anfangend;
 	private ActionListener suchend;
 	private ItemListener genreGewaehlt;
+	private ListSelectionListener bildAddend;
 	
 	public Control()
 	{
@@ -51,7 +55,7 @@ public class Control
 		view.getButtonZurueck().addActionListener(anfangend);
 		view.getButtonSuche().addActionListener(suchend);
 		view.getComboBox().addItemListener(genreGewaehlt);
-		
+		view.getListFilme().addListSelectionListener(bildAddend);
 		
 	}
 	
@@ -85,6 +89,25 @@ public class Control
 		 {
 			 genreWaehlen(view.getComboBox().getSelectedItem());
 		 };
+		 bildAddend = (e) ->
+		 {
+			bildAdden(view.getListFilme().getSelectedValue());
+		 };
+	}
+	
+	private void bildAdden(Object o)
+	{
+		Film f = (Film) o;
+		
+		int nummer = f.getNummer();
+		
+		
+		
+		ImageIcon icon = new ImageIcon("Filmliste/" + nummer + ".PNG");
+		icon.setImage(icon.getImage().getScaledInstance(100,100,Image.SCALE_DEFAULT));
+		view.getLabelBild().setIcon(icon);
+	
+		
 	}
 	
 	private void fuelleDropDown()
