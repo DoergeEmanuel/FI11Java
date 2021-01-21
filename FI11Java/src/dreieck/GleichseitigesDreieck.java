@@ -5,8 +5,7 @@ public class GleichseitigesDreieck extends Dreieckarten
 
 	public GleichseitigesDreieck(double a)
 	{
-		super(a);
-		
+		this.a = a;
 	}
 
 	@Override
@@ -25,5 +24,6 @@ public class GleichseitigesDreieck extends Dreieckarten
 	{
 		return a + a + a;
 	}
+	
 	
 }

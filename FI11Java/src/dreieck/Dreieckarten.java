@@ -3,19 +3,18 @@ package dreieck;
 public abstract class Dreieckarten implements Flaecheninhalt
 {
 	double a;
+	double b;
+	double c;
 	
 	
 	
 	
-	public Dreieckarten(double a)
-	{
-		this.a = a;
-		
-	}
+	
 
+	
 	public double flaeche()
 	{
-		return (a * hoehe());
+		return (a * hoehe() / 2);
 	}
 	
 	

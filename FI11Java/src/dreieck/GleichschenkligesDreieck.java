@@ -2,11 +2,11 @@ package dreieck;
 
 public class GleichschenkligesDreieck extends Dreieckarten
 {
-	private double b;
+	
 	
 	public GleichschenkligesDreieck(double a, double b)
 	{
-		super(a);
+		this.a = a;
 		this.b = b;
 	}
 	
@@ -14,7 +14,7 @@ public class GleichschenkligesDreieck extends Dreieckarten
 	public double hoehe()
 	{
 		
-		return (Math.sqrt((a*a-b*b-b*b)/(-2*a*b))*180/Math.PI);
+		return Math.sqrt(a*a-(b/2)*2);
 		
 	}
 	public double berechneWinkel()
@@ -27,6 +27,8 @@ public class GleichschenkligesDreieck extends Dreieckarten
 	{
 		return a + b + b;
 	}
+
+	
 	
 	
 }
