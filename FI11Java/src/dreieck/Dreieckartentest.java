@@ -9,17 +9,17 @@ public class Dreieckartentest
 		
 		
 		double umfang;
-		double a = 4;
-		double b = 10;
+		double a = 3;
+		double b = 3;
 		double c = 3;
 		
-		GleichschenkligesDreieck gSchenkligDreieck = new GleichschenkligesDreieck(a, b, c);
-		GleichseitigesDreieck gSeitigDreieck = new GleichseitigesDreieck(a, b, c);
+		GleichschenkligesDreieck gSchenkligDreieck = new GleichschenkligesDreieck(a, b);
+		GleichseitigesDreieck gSeitigDreieck = new GleichseitigesDreieck(a);
 			
 		
-		alpha = gSchenkligDreieck.winkel();
+		alpha = gSchenkligDreieck.berechneWinkel();
 		System.out.println(alpha);
-		alpha = gSeitigDreieck.winkel();
+		alpha = gSeitigDreieck.berechneWinkel();
 		System.out.println(alpha);
 		
 		umfang = gSchenkligDreieck.umfang();

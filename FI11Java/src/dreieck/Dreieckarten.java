@@ -3,16 +3,14 @@ package dreieck;
 public abstract class Dreieckarten implements Flaecheninhalt
 {
 	double a;
-	double b;
-	double c;
 	
 	
 	
-	public Dreieckarten(double a, double b, double c)
+	
+	public Dreieckarten(double a)
 	{
 		this.a = a;
-		this.b = b;
-		this.c = c;
+		
 	}
 
 	public double flaeche()
@@ -20,20 +18,18 @@ public abstract class Dreieckarten implements Flaecheninhalt
 		return (a * hoehe());
 	}
 	
-	public  abstract double hoehe();
 	
-	
+	//Das muss nicht sein, weil es bereits im Interface zusammengefasst wird: public  abstract double hoehe();
 	
 	public abstract double berechneWinkel();
 	
+	/*
 	public double winkel()
 	{
-		return (berechneWinkel() * (180/Math.PI));
+		
 		
 	}
-	
-	public double umfang()
-	{
-		return (a + b + c);
-	}
+	*/
+	public abstract double umfang();
+
 }

@@ -7,5 +7,12 @@ public class Biene implements Fliegen
 	{
 		System.out.println("Summsumm");	
 	}
+
+	@Override
+	public void landen()
+	{
+		// TODO Auto-generated method stub
+		
+	}
 	
 }

@@ -3,9 +3,9 @@ package dreieck;
 public class GleichseitigesDreieck extends Dreieckarten
 {
 
-	public GleichseitigesDreieck(double a, double b, double c)
+	public GleichseitigesDreieck(double a)
 	{
-		super(a, b, c);
+		super(a);
 		
 	}
 
@@ -14,9 +14,16 @@ public class GleichseitigesDreieck extends Dreieckarten
 	{
 		return ((a/2) * Math.sqrt(3.0));
 	}
-	@Override
+
 	public double berechneWinkel()
 	{
-		return (Math.acos((a*a-b*b-c*c)/(-2*a*b))*180/Math.PI);
+		return (Math.acos((a*a-a*a-a*a)/(-2*a*a))*180/Math.PI);
 	}
+	
+	@Override
+	public double umfang()
+	{
+		return a + a + a;
+	}
+	
 }
