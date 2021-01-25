@@ -11,6 +11,7 @@ public class Control
 	Mannschaft<BasketballSpieler> basketball;
 	
 	Liga<Mannschaft<FussballSpieler>> bundesliga;
+	LigaWild<Mannschaft<?>> wildeLiga;
 	
 	public Control()
 	{
@@ -36,6 +37,8 @@ public class Control
 		basketball.mannschaftAusgeben();
 		
 		bundesliga.aufnehmen(fcBayern);
+		wildeLiga.aufnehmen(fcBayern);
+		wildeLiga.aufnehmen(basketball);
 		//bundesliga.aufnehmen();
 	}
 	
