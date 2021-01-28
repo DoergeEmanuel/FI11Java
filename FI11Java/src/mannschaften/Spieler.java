@@ -1,6 +1,6 @@
 package mannschaften;
 
-public class Spieler
+public abstract class Spieler
 {
 	protected String name;
 

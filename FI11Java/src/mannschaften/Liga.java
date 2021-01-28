@@ -2,7 +2,7 @@ package mannschaften;
 
 import java.util.ArrayList;
 
-public class Liga<T extends Mannschaft<? extends FussballSpieler>>
+public class Liga<T extends Mannschaft<? extends Spieler>>
 {
 	public ArrayList<T> mannschaftListe;
 	
