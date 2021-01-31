@@ -2,28 +2,24 @@ package mannschaften;
 
 import java.util.ArrayList;
 
-public class Liga<T extends Mannschaft<? extends Spieler>>
+public class Liga<T extends Mannschaft<?extends Spieler>>
 {
-	public ArrayList<T> mannschaftListe;
+	private ArrayList<T> mannschaftListe;
+	private String name;
 	
-	public Liga()
+	public Liga(String name)
 	{
 		mannschaftListe = new ArrayList<T>();
+		this.name = name;
 	}
 	
-	public void aufnehmen(T mannschaft)
+	
+
+	public void mannschaftAdden(T mannschaft)
 	{
 		mannschaftListe.add(mannschaft);
 	}
-	public void rausschmeissen(T mannschaft)
-	{
-		mannschaftListe.remove(mannschaft);
-	}
-	public void auswechseln(T alt, T neu)
-	{
-		mannschaftListe.remove(alt);
-		mannschaftListe.add(neu);
-	}
+	
 	public void vereineAusgeben()
 	{
 		for(Object o:  mannschaftListe)
@@ -31,8 +27,25 @@ public class Liga<T extends Mannschaft<? extends Spieler>>
 			System.out.println(o);
 		}
 	}
-	public void vereinAdden(T mannschaft)
+
+	@Override
+	public String toString()
 	{
-		aufnehmen(mannschaft);;
+		return "Liga " + name;
 	}
+
+
+
+	public ArrayList<T> getMannschaftListe()
+	{
+		return mannschaftListe;
+	}
+
+
+
+	public void setMannschaftListe(ArrayList<T> mannschaftListe)
+	{
+		this.mannschaftListe = mannschaftListe;
+	}
+	
 }

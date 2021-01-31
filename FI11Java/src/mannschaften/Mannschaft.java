@@ -6,25 +6,18 @@ import java.util.ArrayList;
 
 public class Mannschaft<T extends Spieler>
 {
-	public ArrayList<T> spielerliste;
+	private ArrayList<Object> spielerliste;
+	private String name;
 	
-	public Mannschaft()
+	public Mannschaft(String name)
 	{
-		spielerliste = new ArrayList<T>();
-	}
-	
-	public void aufnehmen(T spieler)
-	{
-		spielerliste.add(spieler);
+		spielerliste = new ArrayList<Object>();
+		this.name = name;
+		
 	}
 	public void rausschmeissen(T spieler)
 	{
 		spielerliste.remove(spieler);
-	}
-	public void auswechseln(T alt, T neu)
-	{
-		spielerliste.remove(alt);
-		spielerliste.add(neu);
 	}
 	public void mannschaftAusgeben()
 	{
@@ -35,7 +28,21 @@ public class Mannschaft<T extends Spieler>
 	}
 	public void spielerAdden(T spieler)
 	{
-		aufnehmen(spieler);;
+		spielerliste.add(spieler);
 	}
+	@Override
+	public String toString()
+	{
+		return "Mannschaft " + name;
+	}
+	public ArrayList<Object> getSpielerliste()
+	{
+		return spielerliste;
+	}
+	public void setSpielerliste(ArrayList<Object> spielerliste)
+	{
+		this.spielerliste = spielerliste;
+	}
+	
 
 }
