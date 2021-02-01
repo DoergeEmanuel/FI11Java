@@ -23,7 +23,7 @@ public class Control
 	private DefaultComboBoxModel<Mannschaft> comboBoxModelMannschaft1;
 	private DefaultComboBoxModel<Mannschaft> comboBoxModelMannschaft2;
 	
-	private DefaultListModel<Object> listModelSpieler1;
+	private DefaultListModel<Spieler> listModelSpieler1;
 	private DefaultListModel<Spieler> listModelSpieler2;
 	
 	ArrayList<Liga> ligaListe;
@@ -49,6 +49,7 @@ public class Control
 	private ItemListener listeFuelleSpieler1;
 	private ItemListener listeFuelleSpieler2;
 	
+	
 	public Control()
 	{
 		view = new View();
@@ -59,7 +60,7 @@ public class Control
 		comboBoxModelMannschaft1 = new DefaultComboBoxModel<Mannschaft>();
 		comboBoxModelMannschaft2 = new DefaultComboBoxModel<Mannschaft>();
 		
-		listModelSpieler1 = new DefaultListModel<Object>();
+		listModelSpieler1 = new DefaultListModel<Spieler>();
 		listModelSpieler2 = new DefaultListModel<Spieler>();
 		
 		
@@ -92,7 +93,7 @@ public class Control
 		view.getComboBoxLigen2().addItemListener(comboBoxFuellenMannschaften2);
 		
 		view.getComboBoxMannschaften1().addItemListener(listeFuelleSpieler1);
-	//	view.getComboBoxMannschaften2().addItemListener(listeFuelleSpieler2);
+		view.getComboBoxMannschaften2().addItemListener(listeFuelleSpieler2);
 		
 	
 		/*
@@ -140,7 +141,7 @@ public class Control
 			
 		listeFuelleSpieler2 = (e) ->
 		{
-			//fuelleListeSpieler2(view.getList2().getSelectedValue());
+			fuelleListeSpieler2(view.getComboBoxMannschaften2().getSelectedItem());
 		};
 		
 	
@@ -201,35 +202,68 @@ public class Control
 	
 	private void fuelleListeSpieler1(Object o)
 	{
-		Mannschaft m = (Mannschaft) o;
-		
-		/*
-		ArrayList<Object> sliste = m.getSpielerliste();//!!!!!!!!
-		
-		//System.out.println("" + mliste.getClass());
-		
-		for(Object s: sliste)
+		if(o != null)
 		{
+		
 			
-			listModelSpieler1.addElement(s);
-		} 
-		*/
+			Mannschaft m = (Mannschaft) o;
+			
+			
+			 
+			listModelSpieler1.removeAllElements();
+			
+		
+			for(Object o1: m.getSpielerliste())
+			{
+				
+				listModelSpieler1.addElement((Spieler) o1);
+			} 
+			
+		}
+		
+	}
+	
+	private void fuelleListeSpieler2(Object o)
+	{
+		if(o != null)
+		{
+		
+			
+			Mannschaft m = (Mannschaft) o;
+			
+			
+			 
+			listModelSpieler2.removeAllElements();
+			
+		
+			for(Object o1: m.getSpielerliste())
+			{
+				
+				listModelSpieler2.addElement((Spieler) o1);
+			} 
+			
+		}
+		
 	}
 	
 	
 	private void fuelleComboBoxMannschaften1(Object o)
 	{
-		Liga l = (Liga) o;
-		
-		ArrayList<Mannschaft> mliste = l.getMannschaftListe();
-		
-		//System.out.println("" + mliste.getClass());
-		comboBoxModelMannschaft1.removeAllElements();
-		for(Mannschaft m: mliste)
+		if(o != null)
 		{
+			Liga l = (Liga) o;
 			
-			comboBoxModelMannschaft1.addElement(m);
+			ArrayList<Mannschaft> mliste = l.getMannschaftListe();
+			
+			//System.out.println("" + mliste.getClass());
+			comboBoxModelMannschaft1.removeAllElements();
+			for(Mannschaft m: mliste)
+			{
+				
+				comboBoxModelMannschaft1.addElement(m);
+			}
 		}
+		
 		
 	}
 	private void fuelleComboBoxMannschaften2(Object o)

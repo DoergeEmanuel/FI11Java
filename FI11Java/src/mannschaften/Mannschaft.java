@@ -6,12 +6,12 @@ import java.util.ArrayList;
 
 public class Mannschaft<T extends Spieler>
 {
-	private ArrayList<Object> spielerliste;
+	private ArrayList<T> spielerliste;
 	private String name;
 	
 	public Mannschaft(String name)
 	{
-		spielerliste = new ArrayList<Object>();
+		spielerliste = new ArrayList<T>();
 		this.name = name;
 		
 	}
@@ -35,11 +35,11 @@ public class Mannschaft<T extends Spieler>
 	{
 		return "Mannschaft " + name;
 	}
-	public ArrayList<Object> getSpielerliste()
+	public ArrayList<T> getSpielerliste()
 	{
 		return spielerliste;
 	}
-	public void setSpielerliste(ArrayList<Object> spielerliste)
+	public void setSpielerliste(ArrayList<T> spielerliste)
 	{
 		this.spielerliste = spielerliste;
 	}
