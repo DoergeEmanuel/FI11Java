@@ -27,12 +27,18 @@ public class View extends JFrame
 	private JButton buttonLinks;
 	private JComboBox comboBoxMannschaften1;
 	private JComboBox comboBoxMannschaften2;
+	private JComboBox comboBoxSpieler1;
+	private JComboBox comboBoxSpieler2;
+	private JList list1Mannschaften;
+	private JList list2Mannschaften;
+	private JButton buttonRechtsMannschaften;
+	private JButton buttonLinksMannschaften;
 
 	
 	public View()
 	{
 		initialize();
-		setBounds(100, 100, 683, 486);
+		setBounds(100, 100, 683, 819);
 	}
 	private void initialize()
 	{
@@ -50,6 +56,12 @@ public class View extends JFrame
 		contentPane.add(getButtonLinks());
 		contentPane.add(getComboBoxMannschaften1());
 		contentPane.add(getComboBoxMannschaften2());
+		contentPane.add(getComboBoxSpieler1());
+		contentPane.add(getComboBoxSpieler2());
+		contentPane.add(getList1Mannschaften());
+		contentPane.add(getList2Mannschaften());
+		contentPane.add(getButtonRechtsMannschaften());
+		contentPane.add(getButtonLinksMannschaften());
 	}
 	protected JComboBox getComboBoxLigen1() {
 		if (comboBoxLigen1 == null) {
@@ -68,14 +80,14 @@ public class View extends JFrame
 	protected JList getList1() {
 		if (list1 == null) {
 			list1 = new JList();
-			list1.setBounds(39, 153, 239, 250);
+			list1.setBounds(39, 465, 239, 250);
 		}
 		return list1;
 	}
 	protected JList getList2() {
 		if (list2 == null) {
 			list2 = new JList();
-			list2.setBounds(392, 153, 239, 250);
+			list2.setBounds(392, 465, 239, 250);
 		}
 		return list2;
 	}
@@ -83,7 +95,7 @@ public class View extends JFrame
 		if (buttonRechts == null) {
 			buttonRechts = new JButton(">");
 			buttonRechts.setFont(new Font("Tahoma", Font.PLAIN, 20));
-			buttonRechts.setBounds(288, 179, 89, 60);
+			buttonRechts.setBounds(288, 499, 89, 60);
 		}
 		return buttonRechts;
 	}
@@ -91,7 +103,7 @@ public class View extends JFrame
 		if (buttonLinks == null) {
 			buttonLinks = new JButton("<");
 			buttonLinks.setFont(new Font("Tahoma", Font.PLAIN, 20));
-			buttonLinks.setBounds(288, 265, 89, 60);
+			buttonLinks.setBounds(288, 594, 89, 60);
 		}
 		return buttonLinks;
 	}
@@ -108,5 +120,49 @@ public class View extends JFrame
 			comboBoxMannschaften2.setBounds(392, 91, 239, 22);
 		}
 		return comboBoxMannschaften2;
+	}
+	protected JComboBox getComboBoxSpieler1() {
+		if (comboBoxSpieler1 == null) {
+			comboBoxSpieler1 = new JComboBox();
+			comboBoxSpieler1.setBounds(39, 414, 239, 22);
+		}
+		return comboBoxSpieler1;
+	}
+	protected JComboBox getComboBoxSpieler2() {
+		if (comboBoxSpieler2 == null) {
+			comboBoxSpieler2 = new JComboBox();
+			comboBoxSpieler2.setBounds(392, 414, 239, 22);
+		}
+		return comboBoxSpieler2;
+	}
+	protected JList getList1Mannschaften() {
+		if (list1Mannschaften == null) {
+			list1Mannschaften = new JList();
+			list1Mannschaften.setBounds(39, 132, 239, 250);
+		}
+		return list1Mannschaften;
+	}
+	protected JList getList2Mannschaften() {
+		if (list2Mannschaften == null) {
+			list2Mannschaften = new JList();
+			list2Mannschaften.setBounds(392, 132, 239, 250);
+		}
+		return list2Mannschaften;
+	}
+	protected JButton getButtonRechtsMannschaften() {
+		if (buttonRechtsMannschaften == null) {
+			buttonRechtsMannschaften = new JButton(">");
+			buttonRechtsMannschaften.setFont(new Font("Tahoma", Font.PLAIN, 20));
+			buttonRechtsMannschaften.setBounds(288, 184, 89, 60);
+		}
+		return buttonRechtsMannschaften;
+	}
+	protected JButton getButtonLinksMannschaften() {
+		if (buttonLinksMannschaften == null) {
+			buttonLinksMannschaften = new JButton("<");
+			buttonLinksMannschaften.setFont(new Font("Tahoma", Font.PLAIN, 20));
+			buttonLinksMannschaften.setBounds(288, 255, 89, 60);
+		}
+		return buttonLinksMannschaften;
 	}
 }

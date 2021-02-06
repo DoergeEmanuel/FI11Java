@@ -1,10 +1,12 @@
 package mannschaften;
 
+import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
@@ -25,6 +27,8 @@ public class Control
 	
 	private DefaultListModel<Spieler> listModelSpieler1;
 	private DefaultListModel<Spieler> listModelSpieler2;
+	private DefaultComboBoxModel<Spieler> comboBoxModelSpieler1;
+	private DefaultComboBoxModel<Spieler> comboBoxModelSpieler2;
 	
 	ArrayList<Liga> ligaListe;
 	
@@ -33,7 +37,9 @@ public class Control
 	Liga<Mannschaft<? extends Spieler>> wildeliga;
 	
 	Mannschaft<FussballSpieler> fcBayern;
+	Mannschaft<FussballSpieler> real;
 	Mannschaft<BasketballSpieler> basketball;
+	Mannschaft<BasketballSpieler> basketball2;
 	Mannschaft<Spieler> wilderball;
 	
 	FussballSpieler spieler1;
@@ -49,6 +55,9 @@ public class Control
 	private ItemListener listeFuelleSpieler1;
 	private ItemListener listeFuelleSpieler2;
 	
+	private ActionListener rein;
+	private ActionListener raus;
+	
 	
 	public Control()
 	{
@@ -63,7 +72,8 @@ public class Control
 		listModelSpieler1 = new DefaultListModel<Spieler>();
 		listModelSpieler2 = new DefaultListModel<Spieler>();
 		
-		
+		comboBoxModelSpieler1 = new DefaultComboBoxModel<Spieler>();
+		comboBoxModelSpieler2 = new DefaultComboBoxModel<Spieler>();
 		
 		
 		
@@ -88,6 +98,8 @@ public class Control
 		view.getComboBoxMannschaften2().setModel(comboBoxModelMannschaft2);
 		view.getList1().setModel(listModelSpieler1);
 		view.getList2().setModel(listModelSpieler2);
+		view.getComboBoxSpieler1().setModel(comboBoxModelSpieler1);
+		view.getComboBoxSpieler2().setModel(comboBoxModelSpieler2);
 		
 		view.getComboBoxLigen1().addItemListener(comboBoxFuellenMannschaften1);
 		view.getComboBoxLigen2().addItemListener(comboBoxFuellenMannschaften2);
@@ -95,7 +107,8 @@ public class Control
 		view.getComboBoxMannschaften1().addItemListener(listeFuelleSpieler1);
 		view.getComboBoxMannschaften2().addItemListener(listeFuelleSpieler2);
 		
-	
+		view.getButtonRechts().addActionListener(rein);
+		view.getButtonLinks().addActionListener(raus);
 		/*
 		view.getList1().addListSelectionListener(listeFuelleSpieler1);
 		view.getList2().addListSelectionListener(listeFuelleSpieler2);
@@ -144,13 +157,127 @@ public class Control
 			fuelleListeSpieler2(view.getComboBoxMannschaften2().getSelectedItem());
 		};
 		
+		rein = (e) ->
+		{
+		
+			reinlassen(view.getComboBoxMannschaften1().getSelectedItem(), view.getComboBoxMannschaften2().getSelectedItem());
+			
+		};
+		raus = (e) ->
+		{
+			
+		
+			rauslassen(view.getComboBoxMannschaften2().getSelectedItem(), view.getComboBoxMannschaften1().getSelectedItem());
+			
+		};
 	
 		
 	}
+	private void rauslassen(Object o1, Object o2)
+	{
+		Mannschaft m = (Mannschaft) o1;
+		
+		Mannschaft m2 = (Mannschaft) o2;
+		
+		
+		
+		List<Spieler> spieler;
+		
+		//	m.mannschaftAusgeben();
+			
+		if(view.getList2().getSelectedValuesList() != null && view.getComboBoxMannschaften1().getSelectedItem() != null)
+		{
+			if(m2.getDummyType() == m.getDummyType() || m2.getDummyType() == new WilderDummySpieler("test").getClass() || m.getDummyType() == new WilderDummySpieler("test").getClass())
+			{
+				spieler = (List<Spieler>) view.getList2().getSelectedValuesList();
+				
+				for(Spieler s: spieler)
+				{
+					if(s.getClass() == m2.getDummyType() || m2.getDummyType() == new WilderDummySpieler("test").getClass())
+					{
+						m.rausschmeissen(s);
+						listModelSpieler2.removeElement(s);
+						
+					 
+						m2.spielerAdden(s);
+						listModelSpieler1.addElement(s);
+					}
+					else
+					{
+						System.out.println("Der Typ passt nicht");
+					}
+				}
+			}
+			else
+			{
+				System.out.println("Der Typ passt nicht");
+			}
+			
+			
+		}
+		else
+		{
+			System.out.println("Bitte vervollständigen Sie die Auswahl");
+		}
+	}
 	
+	private void reinlassen(Object o1, Object o2)
+	{
+		
+			Mannschaft m = (Mannschaft) o1;
+			
+			//System.out.println("Das erste: " + m.getDummyType());
+			
+			Mannschaft m2 = (Mannschaft) o2;
+			
+			List<Spieler> spieler;
+			
+		//	m.mannschaftAusgeben();
+			
+			
+			if(view.getList1().getSelectedValuesList() != null && view.getComboBoxMannschaften2().getSelectedItem() != null)
+			{
+				if(m2.getDummyType() == m.getDummyType() || m2.getDummyType() == new WilderDummySpieler("test").getClass() || m.getDummyType() == new WilderDummySpieler("test").getClass())
+				{
+					spieler = (List<Spieler>) view.getList1().getSelectedValuesList();
+				
+					for(Spieler s: spieler)
+					{
+						if(s.getClass() == m2.getDummyType() || m2.getDummyType() == new WilderDummySpieler("test").getClass())
+						{
+							m.rausschmeissen(s);
+							listModelSpieler1.removeElement(s);
+							
+							//System.out.println("Das zweite: " + m2.getDummyType());					
+							m2.spielerAdden(s);
+							listModelSpieler2.addElement(s);
+						}
+						else
+						{
+							System.out.println("Der Typ passt nicht");
+						}
+					}
+				}
+				else
+				{
+					System.out.println("Der Typ passt nicht");
+				}
+			}
+			else
+			{
+				System.out.println("Bitte vervollständigen Sie die Auswahl");
+			}
+			
+		
+				
+		
+	
+	}
 	
 	private void datenAdden()
 	{
+		Mannschaftsfabrik mf = new Mannschaftsfabrik();
+		
 		ligaListe = new ArrayList<Liga>();
 		
 	
@@ -163,12 +290,25 @@ public class Control
 		ligaListe.add(bundesliga);
 		ligaListe.add(wildeliga);
 		
-		fcBayern = new Mannschaft<FussballSpieler>("Fc Bayern");
-		basketball = new Mannschaft<BasketballSpieler>("basketballverein1");
-		wilderball = new Mannschaft<Spieler>("wilderballverein");
 		
+		real = (Mannschaft<FussballSpieler>) mf.erzeugeMannschaft(new FussballSpieler("dummy"), "Real Madrid");
+		
+	//	System.out.println("" + real.getDummyType());
+		
+		
+	//	fcBayern = new Mannschaft<FussballSpieler>("Fc Bayern");
+		fcBayern = (Mannschaft<FussballSpieler>) mf.erzeugeMannschaft(new FussballSpieler("dummy"), "Fc Bayern");
+	//	basketball = new Mannschaft<BasketballSpieler>("basketballverein1");
+		basketball = (Mannschaft<BasketballSpieler>) mf.erzeugeMannschaft(new BasketballSpieler("dummy"), "basketballverein1");
+		basketball2 = (Mannschaft<BasketballSpieler>) mf.erzeugeMannschaft(new BasketballSpieler("dummy"), "basketballverein2");
+	//	System.out.println("" + basketball.getDummyType());
+	//	wilderball = new Mannschaft<Spieler>("wilderballverein");
+		wilderball = (Mannschaft<Spieler>) mf.erzeugeMannschaft(new WilderDummySpieler("dummy"), "wilderballverein");
+		
+		bundesliga.mannschaftAdden(real);
 		bundesliga.mannschaftAdden(fcBayern);
 		basketliga.mannschaftAdden(basketball);
+		basketliga.mannschaftAdden(basketball2);
 		wildeliga.mannschaftAdden(wilderball);
 		wildeliga.mannschaftAdden(fcBayern);
 		wildeliga.mannschaftAdden(basketball);
@@ -184,6 +324,8 @@ public class Control
 		
 		basketball.spielerAdden(spieler3);
 		basketball.spielerAdden(spieler4);
+		
+		basketball2.spielerAdden(spieler3);
 		
 		wilderball.spielerAdden(spieler1);
 		wilderball.spielerAdden(spieler2);
@@ -211,12 +353,14 @@ public class Control
 			
 			 
 			listModelSpieler1.removeAllElements();
+			comboBoxModelSpieler1.removeAllElements();
 			
 		
 			for(Object o1: m.getSpielerliste())
 			{
 				
 				listModelSpieler1.addElement((Spieler) o1);
+				comboBoxModelSpieler1.addElement((Spieler) o1);
 			} 
 			
 		}
@@ -234,13 +378,17 @@ public class Control
 			
 			 
 			listModelSpieler2.removeAllElements();
-			
+			comboBoxModelSpieler2.removeAllElements();
 		
 			for(Object o1: m.getSpielerliste())
 			{
-				
+				Spieler s = (Spieler) o1;
+			//	System.out.println(s);
 				listModelSpieler2.addElement((Spieler) o1);
+				comboBoxModelSpieler2.addElement((Spieler) o1);
 			} 
+			
+			//System.out.println(m.getSpielerliste().size());
 			
 		}
 		

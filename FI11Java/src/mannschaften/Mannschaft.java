@@ -8,7 +8,17 @@ public class Mannschaft<T extends Spieler>
 {
 	private ArrayList<T> spielerliste;
 	private String name;
+	private T dummy = null;
 	
+	
+	public Class<? extends Spieler> getDummyType()
+	{
+		return dummy.getClass();
+	}
+	public void setDummy(T dummy)
+	{
+		this.dummy = dummy;
+	}
 	public Mannschaft(String name)
 	{
 		spielerliste = new ArrayList<T>();
@@ -21,7 +31,7 @@ public class Mannschaft<T extends Spieler>
 	}
 	public void mannschaftAusgeben()
 	{
-		for(Object o:  spielerliste)
+		for(T o:  spielerliste)
 		{
 			System.out.println(o);
 		}
@@ -43,6 +53,4 @@ public class Mannschaft<T extends Spieler>
 	{
 		this.spielerliste = spielerliste;
 	}
-	
-
 }
