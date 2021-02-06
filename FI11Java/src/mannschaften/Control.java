@@ -52,8 +52,12 @@ public class Control
 	
 	private ItemListener comboBoxFuellenMannschaften1;
 	private ItemListener comboBoxFuellenMannschaften2;
+	
+	
 	private ItemListener listeFuelleSpieler1;
+
 	private ItemListener listeFuelleSpieler2;
+
 	
 	private ActionListener rein;
 	private ActionListener raus;
@@ -98,8 +102,7 @@ public class Control
 		view.getComboBoxMannschaften2().setModel(comboBoxModelMannschaft2);
 		view.getList1().setModel(listModelSpieler1);
 		view.getList2().setModel(listModelSpieler2);
-		view.getComboBoxSpieler1().setModel(comboBoxModelSpieler1);
-		view.getComboBoxSpieler2().setModel(comboBoxModelSpieler2);
+
 		
 		view.getComboBoxLigen1().addItemListener(comboBoxFuellenMannschaften1);
 		view.getComboBoxLigen2().addItemListener(comboBoxFuellenMannschaften2);
@@ -109,10 +112,10 @@ public class Control
 		
 		view.getButtonRechts().addActionListener(rein);
 		view.getButtonLinks().addActionListener(raus);
-		/*
-		view.getList1().addListSelectionListener(listeFuelleSpieler1);
-		view.getList2().addListSelectionListener(listeFuelleSpieler2);
-		*/
+		
+	//	view.getList1().addListSelectionListener(listeFuelleSpieler1);
+	//	view.getList2().addListSelectionListener(listeFuelleSpieler2);
+	
 		
 		
 	
@@ -149,9 +152,10 @@ public class Control
 		
 		listeFuelleSpieler1 = (e) ->
 		{
-			fuelleListeSpieler1(view.getComboBoxMannschaften1().getSelectedItem());
+			fuelleListeSpieler1(view.getComboBoxMannschaften1().getSelectedItem());			
 		};
-			
+		
+		
 		listeFuelleSpieler2 = (e) ->
 		{
 			fuelleListeSpieler2(view.getComboBoxMannschaften2().getSelectedItem());
@@ -342,6 +346,7 @@ public class Control
 		
 	}
 	
+	
 	private void fuelleListeSpieler1(Object o)
 	{
 		if(o != null)
@@ -353,20 +358,21 @@ public class Control
 			
 			 
 			listModelSpieler1.removeAllElements();
-			comboBoxModelSpieler1.removeAllElements();
+		//	comboBoxModelSpieler1.removeAllElements();
 			
 		
 			for(Object o1: m.getSpielerliste())
 			{
 				
 				listModelSpieler1.addElement((Spieler) o1);
-				comboBoxModelSpieler1.addElement((Spieler) o1);
+			//	comboBoxModelSpieler1.addElement((Spieler) o1);
 			} 
 			
 		}
 		
 	}
-	
+
+
 	private void fuelleListeSpieler2(Object o)
 	{
 		if(o != null)
@@ -378,20 +384,19 @@ public class Control
 			
 			 
 			listModelSpieler2.removeAllElements();
-			comboBoxModelSpieler2.removeAllElements();
+		//	comboBoxModelSpieler2.removeAllElements();
 		
 			for(Object o1: m.getSpielerliste())
 			{
 				Spieler s = (Spieler) o1;
 			//	System.out.println(s);
 				listModelSpieler2.addElement((Spieler) o1);
-				comboBoxModelSpieler2.addElement((Spieler) o1);
+		//		comboBoxModelSpieler2.addElement((Spieler) o1);
 			} 
 			
 			//System.out.println(m.getSpielerliste().size());
 			
 		}
-		
 	}
 	
 	
