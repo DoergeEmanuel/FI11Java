@@ -114,24 +114,15 @@ public class Control
 		};
 		raus = (e) ->
 		{
-			
 			reinlassen(view.getComboBoxMannschaften2().getSelectedItem(), view.getComboBoxMannschaften1().getSelectedItem(), view.getList2().getSelectedValuesList(), listModelSpieler2, listModelSpieler1);
-			
 		};
 		reinM = (e) ->
 		{
-		
 			reinlassenM(view.getComboBoxLigen1().getSelectedItem(), view.getComboBoxLigen2().getSelectedItem(), view.getList1Mannschaften().getSelectedValuesList(), listModelMannschaft1, listModelMannschaft2, comboBoxModelMannschaft1, comboBoxModelMannschaft2);
-			
-			
 		};
 		rausM = (e) ->
 		{
-			
-		
-			reinlassenM(view.getComboBoxLigen2().getSelectedItem(), view.getComboBoxLigen1().getSelectedItem(), view.getList2Mannschaften().getSelectedValuesList(), listModelMannschaft2, listModelMannschaft1, comboBoxModelMannschaft2, comboBoxModelMannschaft1);
-			
-			
+			reinlassenM(view.getComboBoxLigen2().getSelectedItem(), view.getComboBoxLigen1().getSelectedItem(), view.getList2Mannschaften().getSelectedValuesList(), listModelMannschaft2, listModelMannschaft1, comboBoxModelMannschaft2, comboBoxModelMannschaft1);	
 		};
 		
 		
