@@ -6,8 +6,7 @@ public class Liga<T extends Mannschaft<? extends Spieler>>
 {
 	private ArrayList<T> mannschaftListe;
 	private String name;
-	private T dummy1 = null;
-	private Spieler dummy2 = null;
+	private T dummy = null;
 	
 	public Liga(String name)
 	{
@@ -15,22 +14,20 @@ public class Liga<T extends Mannschaft<? extends Spieler>>
 		this.name = name;
 	}
 	
-	public Class<? extends Mannschaft> getDummyType1()
+	public Class<? extends Mannschaft> getDummyType()
 	{
-		return  dummy1.getClass();
+		return  dummy.getClass();
 	}
-	public void setDummy1(T dummy)
+	public T getDummy()
 	{
-		this.dummy1 = dummy;
+		return dummy;
 	}
-	public Class<? extends Spieler> getDummyType2()
+
+	public void setDummy(T dummy)
 	{
-		return  dummy2.getClass();
+		this.dummy = dummy;
 	}
-	public void setDummy2(Spieler dummy)
-	{
-		this.dummy2 = dummy;
-	}
+	
 	
 
 	public void mannschaftAdden(T mannschaft)

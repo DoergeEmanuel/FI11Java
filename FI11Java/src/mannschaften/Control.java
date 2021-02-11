@@ -65,55 +65,8 @@ public class Control
 		listModelSpieler1 = new DefaultListModel<Spieler>();
 		listModelSpieler2 = new DefaultListModel<Spieler>();
 		
-		
-		
-		
-		
-		
-		
-		
 		datenAdden();
-		
-		
 		listenerAdden();
-		
-		/*
-		fcBayern.mannschaftAusgeben();
-		basketball.mannschaftAusgeben();
-		*/
-		
-	
-	
-		view.getComboBoxLigen1().setModel(comboBoxModelLiga1);
-		view.getComboBoxLigen2().setModel(comboBoxModelLiga2);
-		view.getComboBoxMannschaften1().setModel(comboBoxModelMannschaft1);
-		view.getComboBoxMannschaften2().setModel(comboBoxModelMannschaft2);
-		view.getList1().setModel(listModelSpieler1);
-		view.getList2().setModel(listModelSpieler2);
-		view.getList1Mannschaften().setModel(listModelMannschaft1);
-		view.getList2Mannschaften().setModel(listModelMannschaft2);
-
-		
-		view.getComboBoxLigen1().addItemListener(comboBoxFuellenMannschaften1);
-		view.getComboBoxLigen2().addItemListener(comboBoxFuellenMannschaften2);
-		
-		view.getComboBoxMannschaften1().addItemListener(listeFuelleSpieler1);
-		view.getComboBoxMannschaften2().addItemListener(listeFuelleSpieler2);
-		
-		view.getButtonRechts().addActionListener(rein);
-		view.getButtonLinks().addActionListener(raus);
-		
-		view.getButtonRechtsMannschaften().addActionListener(reinM);
-		view.getButtonLinksMannschaften().addActionListener(rausM);
-		
-	//	view.getList1().addListSelectionListener(listeFuelleSpieler1);
-	//	view.getList2().addListSelectionListener(listeFuelleSpieler2);
-	
-		
-		
-	
-		
-		
 	}
 	
 	private void listenerAdden()
@@ -156,14 +109,13 @@ public class Control
 		rein = (e) ->
 		{
 		
-			reinlassen(view.getComboBoxMannschaften1().getSelectedItem(), view.getComboBoxMannschaften2().getSelectedItem());
+			reinlassen(view.getComboBoxMannschaften1().getSelectedItem(), view.getComboBoxMannschaften2().getSelectedItem(), view.getList1().getSelectedValuesList(), listModelSpieler1, listModelSpieler2);
 			
 		};
 		raus = (e) ->
 		{
 			
-		
-			rauslassen(view.getComboBoxMannschaften2().getSelectedItem(), view.getComboBoxMannschaften1().getSelectedItem());
+			reinlassen(view.getComboBoxMannschaften2().getSelectedItem(), view.getComboBoxMannschaften1().getSelectedItem(), view.getList2().getSelectedValuesList(), listModelSpieler2, listModelSpieler1);
 			
 		};
 		reinM = (e) ->
@@ -182,6 +134,28 @@ public class Control
 			
 		};
 		
+		
+		view.getComboBoxLigen1().setModel(comboBoxModelLiga1);
+		view.getComboBoxLigen2().setModel(comboBoxModelLiga2);
+		view.getComboBoxMannschaften1().setModel(comboBoxModelMannschaft1);
+		view.getComboBoxMannschaften2().setModel(comboBoxModelMannschaft2);
+		view.getList1().setModel(listModelSpieler1);
+		view.getList2().setModel(listModelSpieler2);
+		view.getList1Mannschaften().setModel(listModelMannschaft1);
+		view.getList2Mannschaften().setModel(listModelMannschaft2);
+
+		
+		view.getComboBoxLigen1().addItemListener(comboBoxFuellenMannschaften1);
+		view.getComboBoxLigen2().addItemListener(comboBoxFuellenMannschaften2);
+		
+		view.getComboBoxMannschaften1().addItemListener(listeFuelleSpieler1);
+		view.getComboBoxMannschaften2().addItemListener(listeFuelleSpieler2);
+		
+		view.getButtonRechts().addActionListener(rein);
+		view.getButtonLinks().addActionListener(raus);
+		
+		view.getButtonRechtsMannschaften().addActionListener(reinM);
+		view.getButtonLinksMannschaften().addActionListener(rausM);
 	}
 	
 	private void reinlassenM(Object o1, Object o2, Object o3, DefaultListModel<Mannschaft> dlmM1, DefaultListModel<Mannschaft> dlmM2, DefaultComboBoxModel<Mannschaft> dcmM1, DefaultComboBoxModel<Mannschaft> dcmM2)
@@ -194,12 +168,12 @@ public class Control
 		mannschaften = (List<Mannschaft<Spieler>>) o3;
 		
 		
-		if(o1 != null && o2 != null && mannschaften != null)
+		if(mannschaften != null)
 		{
 			
 			for(Mannschaft m: mannschaften)
 			{
-				if(m.getClass() == l2.getDummyType1() && (m.getDummyType() == l2.getDummyType2()|| l2.getDummyType2() == new WilderDummySpieler("test").getClass()))
+				if(m.getClass() == l2.getDummyType() && (m.getDummyType() == l2.getDummy().getDummyType()|| l2.getDummy().getDummyType() == new WilderDummySpieler("test").getClass()))
 				{
 					l.rausschmeissen(m);
 					dlmM1.removeElement(m);
@@ -220,56 +194,8 @@ public class Control
 		}
 		
 	}
-
-	private void rauslassen(Object o1, Object o2)
-	{
-		Mannschaft m = (Mannschaft) o1;
-		
-		Mannschaft m2 = (Mannschaft) o2;
-		
-		
-		
-		List<Spieler> spieler;
-		
-		//	m.mannschaftAusgeben();
-			
-		if(view.getList2().getSelectedValuesList() != null && view.getComboBoxMannschaften1().getSelectedItem() != null)
-		{
-			if(m2.getDummyType() == m.getDummyType() || m2.getDummyType() == new WilderDummySpieler("test").getClass() || m.getDummyType() == new WilderDummySpieler("test").getClass())
-			{
-				spieler = (List<Spieler>) view.getList2().getSelectedValuesList();
-				
-				for(Spieler s: spieler)
-				{
-					if(s.getClass() == m2.getDummyType() || m2.getDummyType() == new WilderDummySpieler("test").getClass())
-					{
-						m.rausschmeissen(s);
-						listModelSpieler2.removeElement(s);
-						
-					 
-						m2.spielerAdden(s);
-						listModelSpieler1.addElement(s);
-					}
-					else
-					{
-						System.out.println("Der Typ passt nicht");
-					}
-				}
-			}
-			else
-			{
-				System.out.println("Der Typ passt nicht");
-			}
-			
-			
-		}
-		else
-		{
-			System.out.println("Bitte vervollständigen Sie die Auswahl");
-		}
-	}
 	
-	private void reinlassen(Object o1, Object o2)
+	private void reinlassen(Object o1, Object o2, Object o3, DefaultListModel<Spieler> dlmS1, DefaultListModel<Spieler> dlmS2)
 	{
 		
 			Mannschaft m = (Mannschaft) o1;
@@ -280,25 +206,26 @@ public class Control
 			
 			List<Spieler> spieler;
 			
-		//	m.mannschaftAusgeben();
+			spieler = (List<Spieler>) o3;
 			
 			
-			if(view.getList1().getSelectedValuesList() != null && view.getComboBoxMannschaften2().getSelectedItem() != null)
+			if(spieler != null && m2 != null)
 			{//alles ausgewählt
 				if(m2.getDummyType() == m.getDummyType() || m2.getDummyType() == new WilderDummySpieler("test").getClass() || m.getDummyType() == new WilderDummySpieler("test").getClass())
 				{//gleicher typ
-					spieler = (List<Spieler>) view.getList1().getSelectedValuesList();
-				
+					
+					
 					for(Spieler s: spieler)
 					{
 						if(s.getClass() == m2.getDummyType()|| m2.getDummyType() == new WilderDummySpieler("test").getClass())
 						{//einzelner Spieler vom wilde liga typ,  oder in eine wilde Liga stecken
+							
 							m.rausschmeissen(s);
-							listModelSpieler1.removeElement(s);
+							dlmS1.removeElement(s);
 							
 							//System.out.println("Das zweite: " + m2.getDummyType());					
 							m2.spielerAdden(s);
-							listModelSpieler2.addElement(s);
+							dlmS2.addElement(s);
 						}
 						else
 						{
@@ -316,22 +243,15 @@ public class Control
 				System.out.println("Bitte vervollständigen Sie die Auswahl");
 			}
 			
-		
-				
-		
 	
 	}
 	
 	private void datenAdden()
 	{
 		Liga<Mannschaft<FussballSpieler>> bundesliga;
-		
 		Liga<Mannschaft<BasketballSpieler>> basketliga;
-		
 		Liga<Mannschaft<BasketballSpieler>> bundesligaBaskets;
 		Liga<Mannschaft<FussballSpieler>> primeraDivision;
-		
-		
 		Liga<Mannschaft<? extends Spieler>> wildeliga;
 		
 		Mannschaft<FussballSpieler> fcBayern;
@@ -345,26 +265,19 @@ public class Control
 		BasketballSpieler spieler3;
 		BasketballSpieler spieler4;
 		
+		
 		ligaListe = new ArrayList();
 		
 		Ligafabrik lf = new Ligafabrik();
 	
-		/*
-		basketliga = new Liga<Mannschaft<BasketballSpieler>>("basketliga");
-		*/
-	//	bundesliga = new Liga<Mannschaft<FussballSpieler>>("bundesliga");
-	//	wildeliga = new Liga<Mannschaft<? extends Spieler>>("wildeliga");
 		
-		wildeliga = (Liga<Mannschaft<? extends Spieler>>) lf.erzeugeLiga(new Mannschaft("dummy"), new WilderDummySpieler("dummy"), "wildeliga");
-		bundesliga = (Liga<Mannschaft<FussballSpieler>>) lf.erzeugeLiga(new Mannschaft("dummy"), new FussballSpieler("dummy"), "bundesliga");
-		basketliga = (Liga<Mannschaft<BasketballSpieler>>) lf.erzeugeLiga(new Mannschaft("dummy"), new BasketballSpieler("dummy"), "basketliga");
+		wildeliga = (Liga<Mannschaft<? extends Spieler>>) lf.erzeugeLiga(new WilderDummySpieler("dummy"), "wildeliga");
+		bundesliga = (Liga<Mannschaft<FussballSpieler>>) lf.erzeugeLiga(new FussballSpieler("dummy"), "bundesliga");
+		basketliga = (Liga<Mannschaft<BasketballSpieler>>) lf.erzeugeLiga(new BasketballSpieler("dummy"), "basketliga");
+		primeraDivision = (Liga<Mannschaft<FussballSpieler>>) lf.erzeugeLiga(new FussballSpieler("dummy"), "primera division");
+		bundesligaBaskets = (Liga<Mannschaft<BasketballSpieler>>) lf.erzeugeLiga(new BasketballSpieler("dummy"), "bundesligaBaskets");
 		
-		
-		primeraDivision = (Liga<Mannschaft<FussballSpieler>>) lf.erzeugeLiga(new Mannschaft("dummy"), new FussballSpieler("dummy"), "primera division");
-		
-		bundesligaBaskets = (Liga<Mannschaft<BasketballSpieler>>) lf.erzeugeLiga(new Mannschaft("dummy"), new BasketballSpieler("dummy"), "bundesligaBaskets");
-		
-		
+	
 		ligaListe.add(basketliga);
 		ligaListe.add(bundesliga);
 		ligaListe.add(bundesligaBaskets);
@@ -374,17 +287,9 @@ public class Control
 		Mannschaftsfabrik mf = new Mannschaftsfabrik();
 		
 		real = (Mannschaft<FussballSpieler>) mf.erzeugeMannschaft(new FussballSpieler("dummy"), "Real Madrid");
-		
-	//	System.out.println("" + real.getDummyType());
-		
-		
-	//	fcBayern = new Mannschaft<FussballSpieler>("Fc Bayern");
 		fcBayern = (Mannschaft<FussballSpieler>) mf.erzeugeMannschaft(new FussballSpieler("dummy"), "Fc Bayern");
-	//	basketball = new Mannschaft<BasketballSpieler>("basketballverein1");
 		basketball = (Mannschaft<BasketballSpieler>) mf.erzeugeMannschaft(new BasketballSpieler("dummy"), "basketballverein1");
 		basketball2 = (Mannschaft<BasketballSpieler>) mf.erzeugeMannschaft(new BasketballSpieler("dummy"), "basketballverein2");
-	//	System.out.println("" + basketball.getDummyType());
-	//	wilderball = new Mannschaft<Spieler>("wilderballverein");
 		wilderball = (Mannschaft<Spieler>) mf.erzeugeMannschaft(new WilderDummySpieler("dummy"), "wilderballverein");
 		
 		bundesliga.mannschaftAdden(real);
