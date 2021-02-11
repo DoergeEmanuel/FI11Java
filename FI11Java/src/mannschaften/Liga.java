@@ -28,36 +28,11 @@ public class Liga<T extends Mannschaft<? extends Spieler>>
 		this.dummy = dummy;
 	}
 	
-	
-
-	public void mannschaftAdden(T mannschaft)
-	{
-		mannschaftListe.add(mannschaft);
-	}
-	
-	public void vereineAusgeben()
-	{
-		for(Object o:  mannschaftListe)
-		{
-			System.out.println(o);
-		}
-	}
-
-	@Override
-	public String toString()
-	{
-		return "Liga " + name;
-	}
-
-
-
 	public ArrayList<T> getMannschaftListe()
 	{
 		return mannschaftListe;
 	}
-
-
-
+	
 	public void setMannschaftListe(ArrayList<T> mannschaftListe)
 	{
 		this.mannschaftListe = mannschaftListe;
@@ -68,5 +43,20 @@ public class Liga<T extends Mannschaft<? extends Spieler>>
 		mannschaftListe.remove(mannschaft);
 		
 	}
+
+	public void mannschaftAdden(T mannschaft)
+	{
+		mannschaftListe.add(mannschaft);
+	}
+
+	@Override
+	public String toString()
+	{
+		return "Liga " + name;
+	}
+
+
+
+	
 	
 }
