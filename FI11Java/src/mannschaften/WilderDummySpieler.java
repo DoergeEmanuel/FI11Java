@@ -6,5 +6,4 @@ public class WilderDummySpieler extends Spieler
 	{
 		super(name);
 	}
-
 }

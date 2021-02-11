@@ -2,8 +2,6 @@ package mannschaften;
 
 public class Mannschaftsfabrik
 {
-	
-	
 	public Mannschaft<? extends Spieler> erzeugeMannschaft(Object o, String name)
 	{
 		if(o.getClass().isInstance(new FussballSpieler("test")))
@@ -25,6 +23,5 @@ public class Mannschaftsfabrik
 			return m;
 		}
 		return null;
-		
 	}
 }
