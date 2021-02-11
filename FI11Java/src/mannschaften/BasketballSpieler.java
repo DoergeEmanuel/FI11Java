@@ -1,5 +1,7 @@
 package mannschaften;
 
+import java.util.Objects;
+
 public class BasketballSpieler extends Spieler
 {
 	int punkte = 0;
@@ -21,6 +23,4 @@ public class BasketballSpieler extends Spieler
 	{
 		return "BasketballSpieler " + name;
 	}
-	
-	
 }

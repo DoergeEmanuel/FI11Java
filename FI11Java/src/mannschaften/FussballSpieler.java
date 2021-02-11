@@ -1,5 +1,7 @@
 package mannschaften;
 
+import java.util.Objects;
+
 public class FussballSpieler extends Spieler
 {
 	int anzahlTore = 0;
@@ -21,5 +23,4 @@ public class FussballSpieler extends Spieler
 	{
 		return "FussballSpieler " + name;
 	}
-	
 }

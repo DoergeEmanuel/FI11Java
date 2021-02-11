@@ -272,7 +272,7 @@ public class Control
 		
 		mannschaften = (List<Mannschaft<Spieler>>) o3;
 		
-		if(mannschaften != null)
+		if(mannschaften != null && l.hashCode() != l2.hashCode())
 		{	
 			for(Mannschaft m: mannschaften)
 			{
@@ -293,6 +293,10 @@ public class Control
 				}
 			}		
 		}
+		else
+		{
+			System.out.println("Bitte schieben sie eine Auswahl nur in eine gültige Liga");
+		}
 	}
 	
 	private void reinlassen(Object o1, Object o2, Object o3, DefaultListModel<Spieler> dlmS1, DefaultListModel<Spieler> dlmS2)
@@ -305,7 +309,7 @@ public class Control
 		
 		spieler = (List<Spieler>) o3;
 		
-		if(spieler != null && m2 != null)
+		if(spieler != null && m2 != null && m.hashCode() != m2.hashCode())
 		{//alles ausgewählt
 			if(m2.getDummyType() == m.getDummyType() || m2.getDummyType() == new WilderDummySpieler("test").getClass() || m.getDummyType() == new WilderDummySpieler("test").getClass())
 			{//gleicher typ
@@ -333,7 +337,7 @@ public class Control
 		}
 		else
 		{
-			System.out.println("Bitte vervollständigen Sie die Auswahl");
+			System.out.println("Bitte machen sie eine gültige Auswahl");
 		}
 	}
 }

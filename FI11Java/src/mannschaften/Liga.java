@@ -1,6 +1,7 @@
 package mannschaften;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Liga<T extends Mannschaft<? extends Spieler>>
 {
@@ -22,7 +23,6 @@ public class Liga<T extends Mannschaft<? extends Spieler>>
 	{
 		return dummy;
 	}
-
 	public void setDummy(T dummy)
 	{
 		this.dummy = dummy;
@@ -49,6 +49,16 @@ public class Liga<T extends Mannschaft<? extends Spieler>>
 		mannschaftListe.add(mannschaft);
 	}
 
+	@Override
+	public int hashCode()
+	{
+		int result = 17;
+		result = Objects.hash(result, mannschaftListe);
+		result = Objects.hash(result, name);
+		result = Objects.hash(result, dummy);
+		return result;
+	}
+	
 	@Override
 	public String toString()
 	{

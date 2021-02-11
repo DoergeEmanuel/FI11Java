@@ -1,6 +1,7 @@
 package mannschaften;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 
 
@@ -52,5 +53,15 @@ public class Mannschaft<T extends Spieler>
 	public void setSpielerliste(ArrayList<T> spielerliste)
 	{
 		this.spielerliste = spielerliste;
+	}
+	
+	@Override
+	public int hashCode()
+	{
+		int result = 17;
+		result = Objects.hash(result, spielerliste);
+		result = Objects.hash(result, name);
+		result = Objects.hash(result, dummy);
+		return result;
 	}
 }
