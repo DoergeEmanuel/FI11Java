@@ -271,7 +271,7 @@ public class Control
 		
 		mannschaften = (List<Mannschaft<Spieler>>) o3;
 		
-		if(mannschaften != null && l.hashCode() != l2.hashCode())
+		if(mannschaften != null && l != l2)
 		{	
 			for(Mannschaft m: mannschaften)
 			{
@@ -308,7 +308,7 @@ public class Control
 		
 		spieler = (List<Spieler>) o3;
 		
-		if(spieler != null && m2 != null && m.hashCode() != m2.hashCode())
+		if(spieler != null && m2 != null && m != m2)
 		{//alles ausgewählt
 			if(m2.getDummyType() == m.getDummyType() || m2.getDummyType() == new WilderDummySpieler("test").getClass() || m.getDummyType() == new WilderDummySpieler("test").getClass())
 			{//gleicher typ
