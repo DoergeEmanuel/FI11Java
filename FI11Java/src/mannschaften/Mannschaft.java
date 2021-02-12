@@ -12,6 +12,10 @@ public class Mannschaft<T extends Spieler>
 	private T dummy = null;
 	
 	
+	public T getDummy()
+	{
+		return dummy;
+	}
 	public Class<? extends Spieler> getDummyType()
 	{
 		return dummy.getClass();

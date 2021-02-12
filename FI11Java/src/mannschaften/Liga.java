@@ -15,9 +15,9 @@ public class Liga<T extends Mannschaft<? extends Spieler>>
 		this.name = name;
 	}
 	
-	public Class<? extends Mannschaft> getDummyType()
+	public Class<? extends Spieler> getDummyType()
 	{
-		return  dummy.getClass();
+		return  dummy.getDummy().getClass();
 	}
 	public T getDummy()
 	{
@@ -41,7 +41,6 @@ public class Liga<T extends Mannschaft<? extends Spieler>>
 	public void rausschmeissen(T mannschaft)
 	{
 		mannschaftListe.remove(mannschaft);
-		
 	}
 
 	public void mannschaftAdden(T mannschaft)

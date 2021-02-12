@@ -245,7 +245,6 @@ public class Control
 			comboBoxModelMannschaft2.addElement(m);
 			listModelMannschaft2.addElement(m);
 		}
-		
 	}
 	private void fuelleListeSpieler(Object o, DefaultListModel<Spieler> dlmS)
 	{
@@ -260,7 +259,6 @@ public class Control
 				dlmS.addElement((Spieler) o1);
 			} 	
 		}
-		
 	}
 	
 	private void reinlassenM(Object o1, Object o2, Object o3, DefaultListModel<Mannschaft> dlmM1, DefaultListModel<Mannschaft> dlmM2, DefaultComboBoxModel<Mannschaft> dcmM1, DefaultComboBoxModel<Mannschaft> dcmM2)
@@ -276,7 +274,7 @@ public class Control
 		{	
 			for(Mannschaft m: mannschaften)
 			{
-				if(m.getClass() == l2.getDummyType() && (m.getDummyType() == l2.getDummy().getDummyType()|| l2.getDummy().getDummyType() == new WilderDummySpieler("test").getClass()))
+				if(m.getDummyType() == l2.getDummyType()|| l2.getDummyType() == new WilderDummySpieler("test").getClass())
 				{
 					l.rausschmeissen(m);
 					dlmM1.removeElement(m);
