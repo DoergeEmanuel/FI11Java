@@ -267,9 +267,9 @@ public class Control
 		Liga l = (Liga) o1;
 		Liga l2 = (Liga) o2;
 		
-		List<Mannschaft<Spieler>> mannschaften;
+		List<Mannschaft<? extends Spieler>> mannschaften;
 		
-		mannschaften = (List<Mannschaft<Spieler>>) o3;
+		mannschaften = (List<Mannschaft<? extends Spieler>>) o3;
 		
 		if(mannschaften != null && l != l2)
 		{	
@@ -304,9 +304,9 @@ public class Control
 		
 		Mannschaft m2 = (Mannschaft) o2;
 		
-		List<Spieler> spieler;
+		List<? extends Spieler> spieler;
 		
-		spieler = (List<Spieler>) o3;
+		spieler = (List<? extends Spieler>) o3;
 		
 		if(spieler != null && m2 != null && m != m2)
 		{//alles ausgewählt
