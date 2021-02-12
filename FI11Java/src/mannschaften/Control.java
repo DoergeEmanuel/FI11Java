@@ -45,6 +45,13 @@ public class Control
 	
 	public Control()
 	{
+		datenAdden();
+		
+		listenerAdden();
+	}
+	
+	private void datenAdden()
+	{
 		view = new View();
 		
 		comboBoxModelLiga1 = new DefaultComboBoxModel();
@@ -57,13 +64,7 @@ public class Control
 		listModelSpieler1 = new DefaultListModel<Spieler>();
 		listModelSpieler2 = new DefaultListModel<Spieler>();
 		
-		datenAdden();
 		
-		listenerAdden();
-	}
-	
-	private void datenAdden()
-	{
 		Liga<Mannschaft<FussballSpieler>> bundesliga;
 		Liga<Mannschaft<BasketballSpieler>> basketliga;
 		Liga<Mannschaft<BasketballSpieler>> bundesligaBaskets;
