@@ -63,9 +63,4 @@ public class Liga<T extends Mannschaft<? extends Spieler>>
 	{
 		return "Liga " + name;
 	}
-
-
-
-	
-	
 }
