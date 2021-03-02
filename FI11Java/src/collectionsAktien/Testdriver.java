@@ -12,6 +12,8 @@ import java.util.Map;
 import java.util.TreeMap;
 import java.util.TreeSet;
 
+import javax.swing.text.html.HTMLDocument.Iterator;
+
 import sortierung.Bier;
 import sortierung.BierNamenInhaltComparator;
 
@@ -58,14 +60,7 @@ public class Testdriver
 		treeSetDepot.add(basf);
 		treeSetDepot.add(basf2);
 		
-		/*
-		listDepot.add(pfizer);
-		listDepot.add(microsoft);
-		listDepot.add(merck);
-		listDepot.add(apple);
-		listDepot.add(basf);
-		listDepot.add(basf2);
-		*/
+	
 		
 		hashSetDepot.add(pfizer);
 		hashSetDepot.add(microsoft);
@@ -74,29 +69,31 @@ public class Testdriver
 		hashSetDepot.add(basf);
 		hashSetDepot.add(basf2);
 		
+		
+		
+		
+		
 		/*
 		Comparator<Aktie> comp = new ComparatorAktien();
-		
-		
-		Collections.sort(listDepot);
 		*/
+		
 		/*
-		treeSetDepot.clear();
-		treeSetDepot = listDepot;
-		*/
-		
-		
 		for(Aktie a: treeSetDepot)
 		{
 			System.out.println(a);
 		}
+		*/
 		
-		/*
+		
+		
+		
+		
 		for(Aktie a: hashSetDepot)
 		{
+			
 			System.out.println(a);
 		}
-		*/
+		
 		
 	}
 }

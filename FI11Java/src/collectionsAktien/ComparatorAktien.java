@@ -7,7 +7,6 @@ public class ComparatorAktien implements Comparator<Aktie>
 	@Override
 	public int compare(Aktie a1, Aktie a2)
 	{
-		
 		if(a1.getWkn() == null && a2.getWkn() == null)
 		{
 			return 0;

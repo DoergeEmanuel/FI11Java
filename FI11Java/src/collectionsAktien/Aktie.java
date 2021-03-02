@@ -1,5 +1,7 @@
 package collectionsAktien;
 
+import java.util.Objects;
+
 public class Aktie implements Comparable<Aktie>
 {
 	private final String wkn;
@@ -49,9 +51,14 @@ public class Aktie implements Comparable<Aktie>
 		{
 			return -1;
 		}
-		
-		
 		return this.getWkn().compareTo(a.getWkn());
+	}
+	
+	public boolean equals(Aktie aktie)
+	{
+		System.out.println(aktie.getWkn() + " - " + this.getWkn());
+		return aktie.getWkn().equals(this.getWkn());
+		
 	}
 
 	@Override
