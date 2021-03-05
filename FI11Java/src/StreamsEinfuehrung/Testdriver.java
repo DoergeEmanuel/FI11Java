@@ -78,7 +78,7 @@ public class Testdriver
 		//reduce(zahl)
 	
 		System.out.println(result);
-		
+		*/
 		/*
 		filter(zahl -> {
 			if((int) zahl % 2 == 1)
