@@ -23,8 +23,8 @@ public class Testdriver
 	{
 		Collection<Aktie> treeSetDepot = new TreeSet<>();
 		Collection<Aktie> hashSetDepot = new HashSet<Aktie>();
-		List<Aktie> listDepot = new ArrayList<Aktie>();
-		Collection<Aktie> depotUnderTest;
+	//	List<Aktie> listDepot = new ArrayList<Aktie>();
+	//	Collection<Aktie> depotUnderTest;
 		
 		
 		Aktie pfizer = new Aktie("852009", "Pfizer Inc", 10);
@@ -34,6 +34,7 @@ public class Testdriver
 		Aktie basf = new Aktie("BASF11", "BASF", 20);
 		Aktie basf2 = new Aktie("BASF11", "BASF", 9);
 		
+		/*
 		Map<String, Aktie> treeMapDepot = new TreeMap<>(); 
 		
 		treeMapDepot.put(pfizer.getWkn(), pfizer);
@@ -45,7 +46,7 @@ public class Testdriver
 		
 		Collection<String> werte = treeMapDepot.keySet();
 		Collection<Aktie> werte2 = treeMapDepot.values();
-		
+		*/
 		/*
 		for(Aktie s: werte2)
 		{

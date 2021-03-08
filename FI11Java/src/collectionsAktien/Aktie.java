@@ -54,11 +54,32 @@ public class Aktie implements Comparable<Aktie>
 		return this.getWkn().compareTo(a.getWkn());
 	}
 	
-	public boolean equals(Aktie aktie)
+	@Override
+	public int hashCode()
 	{
-		System.out.println(aktie.getWkn() + " - " + this.getWkn());
-		return aktie.getWkn().equals(this.getWkn());
-		
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((wkn == null) ? 0 : wkn.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj)
+	{
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Aktie other = (Aktie) obj;
+		if (wkn == null)
+		{
+			if (other.wkn != null)
+				return false;
+		} else if (!wkn.equals(other.wkn))
+			return false;
+		return true;
 	}
 
 	@Override
