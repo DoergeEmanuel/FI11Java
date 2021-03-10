@@ -67,10 +67,10 @@ public class Control
 					modelTermin.addElement(termin);
 					
 				}
-				
-				
 			}
 		};
+		
+		
 		
 		
 		view.getListTermine().setModel(modelTermin);
