@@ -9,7 +9,7 @@ import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 
-public class Termin
+public class Termin implements Comparable<Termin>
 {
 	private String titel;
 	private LocalDateTime datum;
@@ -30,6 +30,11 @@ public class Termin
 		
 		
 		berechneZeitunterschied();
+	}
+
+	public LocalDateTime getDatum()
+	{
+		return datum;
 	}
 
 	public void berechneZeitunterschied()
@@ -100,6 +105,13 @@ public class Termin
 		
 		
 		return titel + "           " + zeitformat1.format(datum) + "            " + minuten + " Minuten";
+	}
+
+	@Override
+	public int compareTo(Termin o)
+	{
+		return this.getDatum().compareTo(o.getDatum());
+		
 	}
 	
 	

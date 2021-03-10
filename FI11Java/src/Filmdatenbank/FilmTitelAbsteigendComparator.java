@@ -16,10 +16,10 @@ public class FilmTitelAbsteigendComparator implements Comparator<Film>
 		{
 			return 1;
 		}
-		if(film1.getTitel() == null)
+		if(film2.getTitel() == null)
 		{
 			return -1;
-		}
+		}//1 heißt Objekt 1 ist oben?
 		
 		return film2.getTitel().compareTo(film1.getTitel()); //-1 heißt das zweite Objekt (bier2) ist übergeordnet, -1 bedeutet das zweite Objekt ist am Ende der Auflistung also unter Z, das erste Objekt ist bei -1 größer das zweite kleiner
 	}

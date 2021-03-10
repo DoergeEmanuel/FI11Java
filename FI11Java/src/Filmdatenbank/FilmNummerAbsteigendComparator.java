@@ -8,7 +8,7 @@ public class FilmNummerAbsteigendComparator implements Comparator<Film>
 	{	
 		if(film1.getNummer() < film2.getNummer())
 		{
-			return 1;
+			return 1;//1 heißt Obkjekt 1 weiter unten unter Objekt 2
 		}
 		else if(film1.getNummer() == film2.getNummer())
 		{

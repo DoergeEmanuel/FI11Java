@@ -7,6 +7,7 @@ import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 import javax.swing.DefaultListModel;
@@ -84,6 +85,40 @@ public class Control
 		
 		Termin termin = new Termin(titel, datum);
 		modelTermin.addElement(termin);
+		
+		List<Termin> terminliste = new ArrayList<>();
+		
+		terminliste.clear();
+		
+		
+		
+		for(int i = 0; i < modelTermin.size(); i++)
+		{
+			
+			
+			terminliste.add(modelTermin.getElementAt(i));
+			
+			
+		}
+		modelTermin.clear();
+		Collections.sort(terminliste);
+		
+		for(int i = 0; i < terminliste.size(); i++)
+		{
+			
+			
+			terminliste.get(i).berechneZeitunterschied();
+			
+			
+			System.out.println(terminliste.get(i)+ "");
+			Termin termin2 = terminliste.get(i);
+			
+			modelTermin.addElement(termin2);
+			
+		}
 	}
+		
+		
+	
 	
 }
